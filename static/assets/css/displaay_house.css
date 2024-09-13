@@ -1,0 +1,108 @@
+.btn {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: 10px auto 0;
+}
+
+.btn button {
+    border-radius: 20px;
+    background-color: #006357;
+    text-decoration: uppercase !important; /* Remove text underline */
+    color: white;
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #31060a;
+    color: rgb(236, 224, 224);
+}
+
+.btn button .button-text {
+    font-weight: bold;
+}
+
+.text1 p {
+    font-weight: bold;
+    color: #31060a; 
+    text-align: center;
+    font-size: 20px;
+    font-family:playfair display;
+    margin:-10px 10px 10px 1px ;/* Apply bold style to the text */
+}
+
+.btn h1 {
+    margin-right: 10px;
+    color: #026558;
+    font-size: 27px;
+    font-family:playfair display;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.btn a{
+    text-decoration: none;
+    font-family: 'Akshar', sans-serif;
+    font-size: 24px;
+    text-transform: capitalize ;
+    color: #026558;
+    font-weight: bold;
+    
+}
+
+header {
+    background-color: #D9D9D9;
+    
+}
+
+.house-des img {
+    width: 417px;
+    height: 553px;
+    object-fit: cover;
+    
+    border-radius: 8px;
+}
+
+.house-des .figure {
+    height: 412px;
+    overflow: hidden;
+    position: relative;
+}
+
+.house-des .figure-caption {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0; /* Adjust the left positioning */
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 1;
+}
+
+
+.submit {
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #45a049;
+}
+
+
+

@@ -1,0 +1,164 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Checkout</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+<br><br>
+<section class="py-5" style="background-color: rgb(205, 249, 234);">
+    <div class="container">
+        <form method="POST" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 mb-4">
+                    <div class="card mb-4 border shadow-0">
+                        <div class="p-4 d-flex justify-content-between">
+                            <div class="">
+                                <h5>Have an account?</h5>
+                                <p class="mb-0 text-wrap ">Please Registration and Login Complete First</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center flex-column flex-md-row">
+                                <a href="{% url 'register'%}"
+                                    class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Register</a>
+                                <a href="{% url 'login'%}" class="btn btn-primary shadow-0 text-nowrap w-100">Sign
+                                    in</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Checkout -->
+                    <input type="hidden" name="total_amount" value="{{ total_amount }}">
+                    <div class="card shadow-0 border">
+                        <div class="p-4">
+                            <h5 class="card-title mb-3">Order Details</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="fname"
+                                        placeholder="Enter your first name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lname"
+                                        placeholder="Enter your last name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="Enter your address" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="addressLine2" class="form-label">Pickup Location</label>
+                                    <input type="text" class="form-control" id="addressLine2" name="address_line2"
+                                        placeholder="Enter your address line 2">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cityTown" class="form-label">City/Town</label>
+                                    <input type="text" class="form-control" id="cityTown" name="city_town"
+                                        placeholder="Enter your city/town" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="state" class="form-label">State</label>
+                                    <input type="text" class="form-control" id="state" name="state"
+                                        placeholder="Enter your state" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="postcodeZip" class="form-label">Postcode/ZIP</label>
+                                    <input type="text" class="form-control" id="postcodeZip" name="postcode_zip"
+                                        placeholder="Enter your postcode/ZIP" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phone_number"
+                                        placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="orderNotes" class="form-label">Order Notes</label>
+                                    <textarea class="form-control" id="orderNotes" name="order_notes" rows="3"
+                                        placeholder="Enter any order notes"></textarea>
+                                </div>
+                            </div>
+
+                            <h5 class="card-title mb-3">Shipping info</h5>
+
+                            <div class="payment_method">
+                                <div class="mb-25">
+                                    <h5>Payment</h5>
+                                </div>
+                                <div class="payment_option">
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required type="radio" name="payment_option"
+                                            id="sslPayment" value="sslcommerz_payment">
+                                        <label class="form-check-label" for="sslPayment" data-bs-toggle="collapse"
+                                            data-target="#sslPaymentCollapse"
+                                            aria-controls="sslPaymentCollapse">SSLCommerz
+                                            Payment</label>
+                                        <div class="form-group collapse in" id="sslPaymentCollapse">
+                                            <p class="text-muted mt-5">There are many variations of passages of Lorem
+                                                Ipsum
+                                                available, but the majority have suffered alteration.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required type="radio" name="payment_option"
+                                            id="cashOnDelivery" value="cash_on_delivery">
+                                        <label class="form-check-label" for="cashOnDelivery" data-bs-toggle="collapse"
+                                            data-target="#cashOnDeliveryCollapse"
+                                            aria-controls="cashOnDeliveryCollapse">Cash on Delivery</label>
+                                        <div class="form-group collapse" id="cashOnDeliveryCollapse">
+                                            <p class="text-muted mt-5">There are many variations of passages of Lorem
+                                                Ipsum
+                                                available, but the majority have suffered alteration.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order_button pt-20">
+                                <button class="btn btn-md" type="submit">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center justify-content-lg-end">
+                    <div class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px;">
+                        <h6 class="mb-3">Summary</h6>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">Total price:</p>
+                            <p class="mb-2">BDT {{ cart_total|floatformat:"2" }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">Shipping cost:</p>
+                            <!-- Display "Free" if subtotal amount is 4000 or more, otherwise display the shipping cost -->
+                            <p class="mb-2">BDT 100</p>
+                        </div>
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">Total price:</p>
+                            <p class="mb-2 fw-bold">BDT {{ total_amount|floatformat:"2" }}</p>
+                        </div>
+                        <hr />
+                        <h6 class="text-dark my-4">Items in cart</h6>
+                        {% for cart_item in cart_items %}
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="me-3 position-relative">
+                                <!-- Add alt attribute for accessibility -->
+                                <img src="{{ cart_item.medicine.medicine_image.url }}" style="height: 75px; width:75px;"
+                                    class="img-sm rounded border" alt="{{ cart_item.medicine.name }}" />
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary"
+                                    style="color: red;">{{ cart_item.quantity }}</span>
+                            </div>
+                            <div class="">
+                                <a href="#" class="nav-link">{{ cart_item.medicine.name }} <br /></a>
+                                <div class="price text-muted">Total: BDT{{ cart_item.subtotal|floatformat:"2" }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

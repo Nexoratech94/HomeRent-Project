@@ -1,0 +1,60 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>paid_orders</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+<body>
+    <div class="main-wrapper">
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="mt-5">
+                                <h4 class="card-title float-left mt-2">Paid Orders</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card card-table">
+                            <div class="card-body booking_card">
+                                <div class="table-responsive">
+                                    <table class="datatable table table-stripped table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr style="text-align: center;">
+                                                <th>#</th>
+                                                <th>Invoice Number</th>
+                                                <th>Name</th>
+                                                <th>phone_number</th>
+                                                <th>Created Date</th>
+                                                <th>payment_status</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in paid_orders %}
+                                            <tr style="text-align: center;">
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>#{{ order.order_id }}</td>
+                                                <td>{{ order.fname}} {{ order.lname}}</td>
+												<td>{{ order.phone_number }}</td>
+                                                <td>{{ order.order_date|date:"d-m-Y" }}</td>
+                                                <td style="background-color: aquamarine;">{{ order.get_payment_status_display }}</td>
+                                                <td>BDT{{ order.total_amount }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

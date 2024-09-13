@@ -1,0 +1,81 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>ROOM</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <!--Header section start-->
+    <section id="new-property">
+        <div class="property-info">
+            {% if request.user.is_authenticated %}
+            {% if request.user.ownerprofile %}
+            <a href="{% url 'add_room' %}" class="property-btn">
+                Add Houses
+                <img src="{% static 'images/arrow.svg' %}" alt="">
+            </a>
+            {% else %}
+            <a href="" class="property-btn">
+                You are not an owner
+                <img src="{% static 'images/arrow.svg' %}" alt="">
+            </a>
+            {% endif %}
+            {% else %}
+            <p>Please <a href="{% url 'login' %}">log in</a> to add houses.</p>
+            {% endif %}
+
+
+            <h2 class="property-title" style="text-align: center;">
+                Our Popular Residence
+            </h2>
+
+            <a href="{% url 'room' %}" class="property-btn">
+                Explore All
+                <img src="{% static 'images/arrow.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="property-container">
+            {% for room in rooms %}
+            <div class="property-card-container">
+                <div class="property-card">
+                    <img src="{{ room.image1.url }}" style="height: 350px; width: 350px; object-fit: cover;" alt="" class="property-img">
+
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <img src="{% static 'images/location.svg' %}" alt="">
+                            <p class="location-name">{{ room.location }}</p>
+                        </div>
+                        <div class="card-details-content">
+                            <div class="content">
+                                <img src="{% static 'images/bed.svg' %}" alt="">
+                                <p>{{ room.bedrooms }}Bed</p>
+                            </div>
+                            <div class="content">
+                                <img src="{% static 'images/size.svg' %}" alt="">
+                                <p>{{ room.category.category_name }}</p>
+                            </div>
+
+                            <div class="content">
+                                <img src="{% static 'images/area.svg' %}" alt="">
+                                <p>{{ room.size }}M</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <p>৳ {{ room.rental_amount }}</p>
+                            {% if room.booking_status == 'accept' %}
+                            <p>Booked</p>
+                            {% else %}
+                            <a href="{% url 'house_details' room_id=room.room_id %}" class="booking-btn">Book Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+{% endblock %}
+
+ 

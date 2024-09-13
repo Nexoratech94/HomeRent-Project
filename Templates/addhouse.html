@@ -1,0 +1,146 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Add House</title>{% endblock %}
+{% block favicon %}
+<link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <!--Registration section start-->
+    <div class="register" style="background-color: black;">
+        <div class="wrapper1">
+            <form class="form-right" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="text-uppercase" style="text-align: center;">Add your dream home</h2>
+                <div class="mb-3">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" class="input-field" list="categories" required>
+                    <datalist id="categories">
+                        {% for category in categories %}
+                        <option value="{{ category.category_name }}">
+                            {% endfor %}
+                    </datalist>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" class="input-field" list="locations" required>
+                    <datalist id="locations">
+                        {% for location in locations %}
+                        <option value="{{ location.area_location }}">
+                            {% endfor %}
+                    </datalist>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" class="input-field" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="house_number">House Number:</label>
+                    <input type="text" id="house_number" name="house_number" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="road_number">Road Number:</label>
+                    <input type="text" id="road_number" name="road_number" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="block_number">Block Number:</label>
+                    <input type="text" id="block_number" name="block_number" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="special_identification">Special Identification:</label>
+                    <input type="text" id="special_identification" name="special_identification" class="input-field">
+                </div>
+                <div class="mb-3">
+                    <label for="house_type">House Type:</label>
+                    <input type="text" id="house_type" name="house_type" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="rental_amount">Rental Amount:</label>
+                    <input type="number" id="rental_amount" name="rental_amount" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="size">Size:</label>
+                    <input type="number" id="size" name="size" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bedrooms">Bedrooms:</label>
+                    <select id="bedrooms" name="bedrooms" class="input-field" required>
+                        <option value="1">1 Bedroom</option>
+                        <option value="2">2 Bedrooms</option>
+                        <option value="3">3 Bedrooms</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="service_charge">Service Charge:</label>
+                    <input type="number" id="service_charge" name="service_charge" class="input-field" required>
+                </div>
+
+                <!-- Add geolocation input field -->
+                <div class="mb-3">
+                    <label for="geolocation">Geolocation:</label>
+                    <input type="text" id="geolocation" name="geolocation" class="input-field" required>
+                </div>
+
+                <!-- Add location name input field -->
+                <div class="mb-3">
+                    <label for="location_name">Location Name:</label>
+                    <input type="text" id="location_name" name="location_name" class="input-field">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="facility1">Facility 1:</label>
+                    <input type="text" id="facility1" name="facility1" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="facility2">Facility 2:</label>
+                    <input type="text" id="facility2" name="facility2" class="input-field">
+                </div>
+                <div class="mb-3">
+                    <label for="facility3">Facility 3:</label>
+                    <input type="text" id="facility3" name="facility3" class="input-field">
+                </div>
+                <div class="mb-3">
+                    <label for="facility4">Facility 4:</label>
+                    <input type="text" id="facility4" name="facility4" class="input-field">
+                </div>
+                <div class="mb-3">
+                    <label for="floor_number">Floor Number:</label>
+                    <input type="number" id="floor_number" name="floor_number" class="input-field" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image1">Image 1:</label>
+                    <input type="file" id="image1" name="image1" class="input-field" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image2">Image 2:</label>
+                    <input type="file" id="image2" name="image2" class="input-field" accept="image/*">
+                </div>
+                <div class="mb-3">
+                    <label for="image3">Image 3:</label>
+                    <input type="file" id="image3" name="image3" class="input-field" accept="image/*">
+                </div>
+                <div class="mb-3">
+                    <label for="video">Video:</label>
+                    <input type="file" id="video" name="video" class="input-field" accept="video/*">
+                </div>
+                                
+                <div class="form-field">
+                    <input type="submit" value="Register" class="register" name="register">
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <!--Registration section end-->
+
+</body>
+{% endblock %}

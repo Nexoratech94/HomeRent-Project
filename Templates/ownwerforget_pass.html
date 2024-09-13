@@ -1,0 +1,94 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Owner Forget Password</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+<div class="main-wrapper login-body">
+    <div class="login-wrapper">
+        <div class="loginbox">
+            <div class="login-left"> <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" alt="Logo"> </div>
+            <div class="login-right">
+                <div class="login-right-wrap">
+                    <h1>Owner Forgot Password?</h1>
+                    <p class="account-subtitle">Enter your email to get a password reset link</p>
+                    <form action="{% url 'forgot' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="custom-form-group">
+                            <label for="username">Username</label>
+                            <input id="username" name="username" placeholder="Username" class="custom-form-control" type="text">
+                        </div>
+
+                        <div class="custom-form-group">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" placeholder="Email address" class="custom-form-control" type="email">
+                        </div>
+
+                        <div class="custom-form-group">
+                            <label for="new_password">New Password</label>
+                            <input id="new_password" name="new_password" placeholder="New Password" class="custom-form-control" type="password">
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                        </div>
+                    </form>
+                    <div class="text-center dont-have">Remember your password? <a href="login.html">Login</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Center the loginbox */
+.loginbox {
+    display: flex;
+    justify-content: center;
+}
+
+/* Style the login form */
+.login-right {
+    max-width: 300px;
+    margin: 75px auto;
+}
+
+/* Style the form input fields */
+.custom-form-control {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the form submit button */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Style the 'Remember your password' link */
+.dont-have {
+    margin-top: 15px;
+}
+
+.dont-have a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.dont-have a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}

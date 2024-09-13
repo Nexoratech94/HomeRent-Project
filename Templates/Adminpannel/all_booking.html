@@ -1,0 +1,153 @@
+﻿{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>All Booking</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+
+<body>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<div class="mt-5">
+								<h4 class="card-title float-left mt-2">Appointments</h4>
+								<a href="" class="btn btn-primary float-right veiwbutton">Add
+									Booking</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card card-table">
+							<div class="card-body booking_card">
+								<div class="table-responsive">
+									<table class="datatable table table-stripped table table-hover table-center mb-0">
+										<thead>
+											<tr style="text-align: center;">
+												<th>Booking ID</th>
+												<th>Name</th>
+												<th>Room Type</th>
+												<th>Bedrooms</th>
+												<th>Ammout</th>
+												<th>Room</th>
+												<th>Email ID</th>
+												<th>Ph.Number</th>
+												<th>Starting Month</th>
+												<th>Date</th>
+												<th>Status</th>
+												<th class="text-right">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for booking in bookings %}
+												<tr style="text-align: center;">
+													<td>RM:{{ booking.booking_id }}</td>
+													<td>
+														<h2 class="table-avatar">
+															<a href="" class="avatar avatar-sm mr-2">
+																{% if booking.renter_image %}
+																	<img class="avatar-img rounded-circle" src="{{ booking.renter_image.url }}" alt="User Image">
+																{% else %}
+																	<img class="avatar-img rounded-circle" src="{% static 'placeholder.jpg' %}" alt="Placeholder Image">
+																{% endif %}
+															</a>
+															<a href="">{{ booking.name }} <span>ROOMID:#{{ booking.room.room_id }}</span></a>
+														</h2>
+													</td>
+													<td>{{ booking.room.house_type }}</td>
+													<td>{{ booking.room.bedrooms }} Bedrooms</td>
+													<td>{{ booking.room.rental_amount }}</td>
+													<td>
+														{% if booking.room.image1 %}
+															<img src="{{ booking.room.image1.url }}" alt="Room Image" style="height: 50px; width: 50px" onclick="showImage(this)">
+														{% endif %}
+													</td>
+													<td>{{ booking.email }}</td>
+													<td>{{ booking.phone }}</td>
+                                                    <td>
+														{% for month_num, month_name in booking.MONTH_CHOICES %}
+															{% if month_num == booking.booking_month %}
+																{{ month_name }}
+															{% endif %}
+														{% endfor %}
+													</td>
+													
+													<td>{{ booking.booking_date }}</td>
+													<td>
+														<div class="actions">
+															<form action="{% url 'update_booking_status' booking.id %}" method="POST">
+																{% csrf_token %}
+																<select class="form-control" name="booking_status" onchange="this.form.submit()" style="width: 200px;">
+																	{% for status_code, status_name in booking.STATUS_CHOICES %}
+																		<option value="{{ status_code }}" {% if booking.booking_status == status_code %}selected{% endif %}>
+																			{{ status_name }}
+																		</option>
+																	{% endfor %}
+																</select>
+															</form>
+														</div>
+													</td>
+													<td class="text-right">
+														<div class="dropdown dropdown-action">
+															<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+																<i class="fas fa-ellipsis-v ellipse_color"></i>
+															</a>
+															<div class="dropdown-menu dropdown-menu-right">
+																<a class="dropdown-item" href="{% url 'edit_book' booking.id %}">
+																	<i class="fas fa-pencil-alt m-r-5"></i> Edit
+																</a>
+																<a class="dropdown-item" href="{% url 'delete_booking' booking_id=booking.id %}" data-toggle="modal" data-target="#delete_asset">
+																	<i class="fas fa-trash-alt m-r-5"></i> Delete
+																</a>																
+															</div>
+														</div>
+													</td>												
+												</tr>
+											{% endfor %}
+										</tbody>
+										
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% for booking in bookings %}
+			<div id="delete_asset" class="modal fade delete-modal" role="dialog">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-body text-center">
+                           <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: red;"></i>
+
+							<h3 class="delete_class">Are you sure want to delete this Asset?</h3>
+							<div class="m-t-20">
+								<a href="" class="btn btn-white" data-dismiss="modal">Close</a>
+								<a href="{% url 'delete_booking' booking_id=booking.id %}" class="btn btn-danger">Delete</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			{% endfor %}			
+		</div>
+	</div>
+</body>
+<script>
+    function showImage(img) {
+        // Toggle between original size and 300x300 size
+        if (img.style.width === '50px') {
+            img.style.width = '300px';
+            img.style.height = '300px';
+        } else {
+            img.style.width = '50px';
+            img.style.height = '50px';
+        }
+    }
+</script>
+
+{% endblock %}

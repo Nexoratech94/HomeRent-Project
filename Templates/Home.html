@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-2fX1LnjQGwRxMKJICg8FRs3gp/zk2S1/1mGv1bX0GO6RvQwB4XGPAnJYPISXxF5a" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-2fX1LnjQGwRxMKJICg8FRs3gp/zk2S1/1mGv1bX0GO6RvQwB4XGPAnJYPISXxF5a" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/loopple/loopple.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/option.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/stylle.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ecommer.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/checkout.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/poetsen-one" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&family=Bungee+Spice&family=Ms+Madi&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&family=Stint+Ultra+Condensed&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/poetsen-one" rel="stylesheet">
+
+    <link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    {% block title %}<title>HOME</title>{% endblock %}
+    {% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+ 
+</head>
+
+<body>
+    <!--Navbar section start-->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-none fixed-top" aria-label="navbar"
+        style="background-color: #161B2A;">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="{% url 'Home' %}"></a>
+                <a class="navbar-brand" href="{% url 'Home' %}"><img src="{% static 'logo/logo.png' %}" alt="">
+                    Easy Rent</a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">HOME</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'room' %}">ROOM</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'blog' %}">BLOG</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                    </li>
+
+                    <!-- Existing code -->
+
+                    <li class="nav-item dropdown"> <!-- Add "dropdown" class to create a dropdown menu -->
+                        <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Service
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="serviceDropdown"> <!-- Create a dropdown menu -->
+                            <li><a class="dropdown-item" href="{% url 'medicine' %}"
+                                    onclick="changeBackgroundColor(event)">Medicine</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'Upcoming' %}" onclick="changeBackgroundColor(event)">Food</a></li>
+                            <li><a class="dropdown-item" href="{% url 'transport' %}" onclick="changeBackgroundColor(event)">Transport</a>
+                            </li>
+                            <!-- Add your Medicine section here -->
+                        </ul>
+                    </li>
+
+                    <!-- Remaining code -->
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">ABOUT</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    {% if user.ownerprofile.registration_status == 'accept' %}
+                    <!-- Show the "Owner Profile" link if the user is authenticated and their registration status is 'accept' -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'view_owner_profile' %}">
+                            Profile</a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.userprofile %}
+                    <!-- Show the "User Profile" link if the user has a UserProfile -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">
+                            Profile</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-it">
+                        <a class="nav-link active" aria-current="page"
+                            href="{% url 'logout' %}"><button>LOGOUT</button></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-it">
+                        <a class="nav-link active" aria-current="page"
+                            href="{% url 'login' %}"><button>LOGIN</button></a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                    <!-- Show the "Cart" link if the user is authenticated and is not an owner -->
+                    <li class="nav-it">
+                        <a class="nav-link active" aria-current="page" href="{% url 'cart' %}"><button>CART</button></a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+                <form class="d-flex" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search-input" onkeyup="showSuggestions(this.value)">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div id="suggestions" class="suggestions-box"></div>
+                </form>
+                
+            </div>
+        </div>
+    </nav>
+    <!--Navbar section end-->
+    {%block content%}
+    {%endblock content%}
+
+    {% block point %}
+    <section class="part1">
+        <div class="text">
+            <h1>find Real Estate<br>and get your<br>dream space.
+            </h1>
+            <p>Or rent comfortable and beautiful <br> house in many place.</p>
+        </div>
+
+        <div class="image_home">
+            <img src="{% static 'assets/image/home.jpg'%}" alt="">
+        </div>
+    </section>
+
+    <!-- Add an id to the form for easy access -->
+        <div class="container">
+            <section>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="big-button">
+                            <!-- Location Custom Dropdown -->
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <select class="custom-select" id="location" name="location">
+                                    <option value="" selected disabled>--- Select Location ---</option>
+                                    {% for location in locations %}
+                                    <option value="{{ location.area_location }}">{{ location.area_location }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!-- Prototype Custom Dropdown -->
+                            <div class="form-group">
+                                <label for="prototype">Property</label>
+                                <select class="custom-select" id="prototype" name="prototype">
+                                    <option value="" selected disabled>--- Select Prototype ---</option>
+                                    {% for category in room_categories %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+
+                            <!-- Price Custom Dropdown -->
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <select class="custom-select" id="price" name="price">
+                                    <option value="" selected disabled>--- Select Price ---</option>
+                                    <option value="4000-5000 TAKA">4000-5000 TAKA</option>
+                                    <option value="5000-7000 TAKA">5000-7000 TAKA</option>
+                                    <option value="7000-14000 TAKA">7000-14000 TAKA</option>
+                                    <option value="14000-25000 TAKA">14000-25000 TAKA</option>
+                                </select>
+                            </div>
+
+                            <!-- Search Button -->
+                            <div class="search">
+                                <!-- Add onclick event to call the searchRooms function -->
+                                <button type="button" class="btn btn-primary" onclick="searchRooms()">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+
+
+    <div class="container">
+        <header><br><br>
+            <h6>What We Served</h6>
+            <h1>the benefit from our service</h1>
+        </header>
+
+        <div class="benefits">
+            <div class="benefit">
+                <img src="{% static 'logo/3d_viewer_logo.png' %}" alt="">
+                <h3>3D Views</h3>
+                <p>You Can Catch A Glimpse Of This 3d Viewer Feature Before You Have Seen The House And Property
+                    Directly.</p>
+            </div>
+
+            <div class="benefit">
+                <img src="{% static 'logo/Ellipse3.png' %}" alt="">
+                <h3>Chose Your Type</h3>
+                <p>Find Your Dream And Lovely House. Look The Property Model You Like And You Can Chose The Locations.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <img src="{% static 'logo/Ellipse2.png' %}" alt="">
+                <h3>Easy Pay</h3>
+                <p>After You Adjust The Property And House Model And Have Seen It In Person, You Can Make Payments.</p>
+            </div>
+        </div>
+    </div>
+    {% endblock point%}
+    <!-- Footer section start -->
+    <div class="footer">
+        <div class="lower">
+            <div class="why-are-you-waiting">
+                <h2>Why are you waiting <br> Let's find your dream <br> room or house?</h2>
+            </div>
+            <div class="logo">
+                <div class="lo">
+                    <a href="https://www.facebook.com/"><img src="{%static 'logo/fb.png'%}" alt=""></a>
+                </div>
+                <div class="lo">
+                    <a href="https://www.instagram.com/"><img src="{%static 'logo/ins.png'%}" alt=""></a>
+                </div>
+                <div class="lo">
+                    <a href="https://www.tiktok.com/"><img src="{%static 'logo/link.png'%}" alt=""></a>
+                </div>
+                <div class="lo">
+                    <a href="https://www.linkedin.com/"><img src="{% static 'logo/tik.png' %}" alt=""></a>
+                </div>
+            </div>
+
+            <div class="list">
+                <ul>
+                    <a href="{% url 'login' %}">
+                        <li>Login_System</li>
+                    </a>
+                    <a href="">
+                        <li>My account</li>
+                    </a>
+                    <a href="{% url 'room' %}">
+                        <li>Book now</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="list">
+                <ul>
+                    <a href="">
+                        <li>Resource</li>
+                    </a>
+                    <a href="{% url 'blog' %}">
+                        <li>blog</li>
+                    </a>
+                    <a href="">
+                        <li>help</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="list">
+                <ul>
+                    <a href="{% url 'about' %}">
+                        <li>About Us</li>
+                    </a>
+                    <a href="{% url 'contact' %}">
+                        <li>Contact</li>
+                    </a>
+                    <a href="">
+                        <li>sustinability</li>
+                    </a>
+                </ul>
+            </div>
+
+        </div>
+        <br>
+        <div class="end">
+            <div class="email">
+                <a href=""><img src="{% static 'logo/emi.png'%}" alt="">EasyRent@gmail.com</a>
+            </div>
+
+            <div class="copy"><img src="{% static 'logo/blog.png' %}" alt="">@2024 copyright by EasyRent</div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://demos.creative-tim.com/soft-ui-design-system/assets/js/soft-design-system.min.js?v=1.0.5"
+        type="text/javascript"></script>
+    <script src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/js/plugins/countup.min.js"
+        type="text/javascript"></script>
+    <script src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/js/plugins/flatpickr.min.js"></script>
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript'
+        src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+        integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static 'assets/script/script.js' %}"></script>
+</body>
+
+</html>
+
+
+<script>
+    //room page animation
+    // Function to handle form submission
+    function searchRooms() {
+        // Get selected values from dropdowns
+        var location = encodeURIComponent(document.getElementById('location').value);
+        var prototype = encodeURIComponent(document.getElementById('prototype').value);
+        var price = document.getElementById('price').value.replace(' TAKA', ''); // Remove ' TAKA' from price
+
+        // Construct the search URL with selected values
+        var searchURL = "/search/?location=" + location + "&prototype=" + prototype + "&price=" + price;
+
+        // Redirect to the search URL
+        window.location.href = searchURL;
+    }
+
+</script>

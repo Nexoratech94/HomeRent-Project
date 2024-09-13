@@ -1,0 +1,193 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Edit Room</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title mt-5">Edit Room</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-control" name="category">
+                                        {% for category in categories %}
+                                            <option value="{{ category.pk }}" {% if room.category_id == category.pk %} selected {% endif %}>{{ category.category_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <select class="form-control" name="location">
+                                        {% for location in locations %}
+                                            <option value="{{ location.pk }}" {% if room.location_id == location.pk %} selected {% endif %}>{{ location.area_location }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>House Type</label>
+                                    <input class="form-control" type="text" name="house_type" value="{{ room.house_type }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>House Number</label>
+                                    <input class="form-control" type="text" name="house_number" value="{{ room.house_number }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Road Number</label>
+                                    <input class="form-control" type="text" name="road_number" value="{{ room.road_number }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bedrooms</label>
+                                    <select class="form-control" name="bedrooms">
+                                        <option value="1" {% if room.bedrooms == 1 %} selected {% endif %}>1 Bedroom</option>
+                                        <option value="2" {% if room.bedrooms == 2 %} selected {% endif %}>2 Bedrooms</option>
+                                        <option value="3" {% if room.bedrooms == 3 %} selected {% endif %}>3 Bedrooms</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Size</label>
+                                    <input class="form-control" type="text" name="size" value="{{ room.size }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Floor Number</label>
+                                    <input class="form-control" type="text" name="floor_number" value="{{ room.floor_number }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Block Number</label>
+                                    <input class="form-control" type="text" name="block_number" value="{{ room.block_number }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Street</label>
+                                    <input class="form-control" type="text" name="street" value="{{ room.street }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Special Identification</label>
+                                    <input class="form-control" type="text" name="special_identification" value="{{ room.special_identification }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Rental Amount</label>
+                                    <input class="form-control" type="number" name="rental_amount" value="{{ room.rental_amount }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Service Charge</label>
+                                    <input class="form-control" type="number" name="service_charge" value="{{ room.service_charge }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control" type="text" name="description" value="{{ room.description }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Geolocation</label>
+                                    <input class="form-control" type="text" name="geolocation" value="{{ room.geolocation}}">
+                                </div>
+                            </div> 
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Location Name</label>
+                                    <input class="form-control" type="text" name="location_name" value="{{ room.location_name }}">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 1</label>
+                                    <input class="form-control" type="text" name="facility1" value="{{ room.facility1 }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 2</label>
+                                    <input class="form-control" type="text" name="facility2" value="{{ room.facility2 }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 3</label>
+                                    <input class="form-control" type="text" name="facility3" value="{{ room.facility3 }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 4</label>
+                                    <input class="form-control" type="text" name="facility4" value="{{ room.facility4 }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Images</label>
+                                    <input type="file" class="form-control-file" name="image1" accept="image/*">
+                                    {% if room.image1 %}
+                                        <img src="{{ room.image1.url }}" alt="Image 1" class="img-fluid" style="width: 100px; height: 100px;">
+                                    {% endif %}
+                                    <input type="file" class="form-control-file" name="image2" accept="image/*">
+                                    {% if room.image2 %}
+                                        <img src="{{ room.image2.url }}" alt="Image 2" class="img-fluid" style="width: 100px; height: 100px;">
+                                    {% endif %}
+                                    <input type="file" class="form-control-file" name="image3" accept="image/*">
+                                    {% if room.image3 %}
+                                        <img src="{{ room.image3.url }}" alt="Image 3" class="img-fluid" style="width: 100px; height: 100px;">
+                                    {% endif %}
+                                    <input type="file" class="form-control-file" name="video" accept="video/*">
+                                    {% if room.video %}
+                                    <video width="320" height="240" controls>
+                                        <source src="{{ room.video.url }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                                
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{% url 'rooms' %}" class="btn btn-secondary">Delete</a>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

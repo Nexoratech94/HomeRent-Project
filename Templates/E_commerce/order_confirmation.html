@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <style>
+        /* Set background color using RGB values */
+        /* Custom CSS for Order Confirmation page */
+body {
+    background-color: rgb(63, 81, 181); /* Deep Blue */
+    color: #fff; /* Set text color to white for better contrast */
+    padding-top: 60px; /* Adjust the padding for the fixed navbar */
+    font-family: 'Roboto', sans-serif; /* Set font family to Roboto */
+}
+
+.container {
+    max-width: 800px; /* Limit the width of the content for better readability */
+}
+
+/* Style the navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Style the ordered items list */
+.list-group-item {
+    border: none;
+    border-radius: 0;
+}
+
+.list-group-item img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 20px;
+}
+
+/* Style the back to home button */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+    body {
+        padding-top: 56px; /* Adjust padding for smaller screens */
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Order Confirmation</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <h1>Order Confirmation</h1>
+        <p>Thank you for your order!</p>
+        
+        <h2>Order Details</h2>
+        <p>Order ID: {{ order.order_id|upper }}</p>
+        <p>Order Date: {{ order.order_date }}</p>
+        <p>Total Amount: {{ order.total_amount }}</p>
+        
+        <h2>Ordered Items</h2>
+        <ul class="list-group">
+            {% for order_item in order_items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <img src="{{ order_item.medicine.medicine_image.url }}" alt="{{ order_item.medicine.name }}">
+                        {{ order_item.medicine.name }}
+                    </div>
+                    <span class="badge bg-primary rounded-pill">Quantity: {{ order_item.quantity }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <a href="{% url 'Home' %}" class="btn btn-primary mt-4">Back to Home</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

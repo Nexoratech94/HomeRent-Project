@@ -1,0 +1,255 @@
+
+/* Path: assets/css/footer.css */
+/* aDD TO CART CSS */
+/* Shopping cart container */
+
+.addcart {
+    background-color: #71d0b57b;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.shopping-cart {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 75px auto auto;
+    padding: 20px;
+    background-color: #71d0b57b;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart items container */
+.cart-items {
+    flex:1;
+    padding: 10px;
+    margin: initial;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Individual item */
+.item1 {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Last item in the list */
+.item1:last-child {
+    border-bottom: none;
+}
+
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.action-btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.quantity-display {
+    margin: 0 5px;
+    font-size: 16px;
+}
+
+/* Item image */
+.item-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+/* Item details */
+.item-details {
+    flex: 1;
+}
+
+/* Item title */
+.item-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Item description */
+.item-description {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Item actions */
+.item-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Action buttons */
+.action-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Quantity */
+.quantity {
+    padding: 0 10px;
+}
+
+/* Item price */
+.item-price {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Remove button */
+.remove-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #bd2130;
+}
+
+/* Cart summary container */
+.cart-summary {
+    width: 325px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #2f2727;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Summary title */
+.summary-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.discount-code {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+/* Summary details */
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.detail-value {
+    color: #ffffff;
+}
+
+/* Shipping method dropdown */
+.shipping-method {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+/* Discount code input */
+.discount-code input {
+    width: calc(100% - 1px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Apply button */
+.apply-btn {
+    width: 80px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Checkout button */
+.checkout-btn {
+    padding: 15px 0;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+
+
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .shopping-cart {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-summary {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

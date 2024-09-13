@@ -1,0 +1,205 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Edit Order</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+
+<body>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<h3 class="page-title mt-5">Edit Invoice</h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<form method="POST">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="row formtype">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="order_id">Order ID:</label>
+												<input type="text" class="form-control" id="order_id" name="order_id"
+													value="{{ order.order_id }}" disabled>
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Client First Name *</label>
+												<input type="text" class="form-control" name="fname"
+													value="{{ order.fname }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Client Last Name *</label>
+												<input type="text" class="form-control" name="lname"
+													value="{{ order.lname }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Address *</label>
+												<input type="text" class="form-control" name="address"
+													value="{{ order.address }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Address Line 2</label>
+												<input type="text" class="form-control" name="address_line2"
+													value="{{ order.address_line2 }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>City/Town *</label>
+												<input type="text" class="form-control" name="city_town"
+													value="{{ order.city_town }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>State *</label>
+												<input type="text" class="form-control" name="state"
+													value="{{ order.state }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Postcode/ZIP *</label>
+												<input type="text" class="form-control" name="postcode_zip"
+													value="{{ order.postcode_zip }}">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Phone Number *</label>
+												<input type="text" class="form-control" name="phone_number"
+													value="{{ order.phone_number }}">
+											</div>
+										</div>
+
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="payment_status">Payment Status:</label>
+												<select class="form-control" id="payment_status" name="payment_status">
+													{% for status_value, status_label in order.PAYMENT_STATUS_CHOICES %}
+														<option value="{{ status_value }}" {% if status_value == order.payment_status %} selected {% endif %}>
+															{{ status_label }}
+														</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div> 				
+										
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Order Notes</label>
+												<textarea class="form-control"
+													name="order_notes">{{ order.order_notes }}</textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<div class="table-responsive">
+										<table class="table table-hover table-white">
+											<thead>
+												<tr>
+													<th style="width: 20px">#</th>
+													<th class="col-sm-2">Item</th>
+													<th class="col-md-6">Description</th>
+													<th style="width:100px;">Unit Cost</th>
+													<th style="width:80px;">Qty</th>
+													<th>Amount</th>
+													<th></th>
+												</tr>
+											</thead>
+											{% for order_item in order.orderitem_set.all %}
+											<tbody>
+												<tr>
+													<td>{{ forloop.counter }}</td>
+													<td>
+														<input class="form-control" type="text"
+															value="{{order_item.medicine.name}}" disabled>
+													</td>
+													<td>
+														<input class="form-control" type="text"
+															value="{{order_item.medicine.description}}" disabled>
+													</td>
+													<td>
+														<input class="form-control" type="text"
+															value="{{ order_item.price }}" disabled>
+													</td>
+													<td>
+														<input class="form-control quantity-input" type="number" value="{{ order_item.quantity }}" name="quantity_{{ order_item.id }}"style="width:70px">
+													</td>
+													<td>
+														<input class="form-control form-amt" readonly=""
+															style="width:120px" type="text"
+															value="{{order_item.subtotal}}" disabled>
+													</td>
+													<td><a href="javascript:void(0)" class="text-danger font-18"
+															title="Remove"><i class="fas fa-trash-alt"></i></a></td>
+												</tr>
+											</tbody>
+											{% endfor %}
+										</table>
+									</div>
+									<div class="table-responsive">
+										<table class="table table-hover table-white">
+											<tbody>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td class="text-right">Total</td>
+													<td style="text-align: right; width: 230px">BDT{{ total_subtotal|floatformat:2 }}</td>
+													</td>
+
+												</tr>
+
+												<tr>
+													<td colspan="5" style="text-align: right">
+														Delivery Charge(%)
+													</td>
+													<td style="text-align: right; width: 230px">
+														<input class="form-control text-right" value="100" type="text"
+															disabled>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="5" style="text-align: right; font-weight: bold">
+														Grand Total
+													</td>
+													<td style="text-align: right; font-weight: bold; font-size: 16px; width: 230px">
+														BDT{{ order.total_amount }}
+													</td>													
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary buttonedit">Update Invoice</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

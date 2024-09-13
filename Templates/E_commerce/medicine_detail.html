@@ -1,0 +1,131 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Medicine Details</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+<br><br>
+<!-- content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5" style="background-color: aquamarine;">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+            href="{{ medicine.medicine_image.url }}">
+            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
+              src="{{ medicine.medicine_image.url }}" />
+          </a>
+        </div>
+        <!-- thumbs-wrap.// -->
+        <!-- gallery-wrap .end// -->
+      </aside>
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h4 class="title text-dark">
+            {{ medicine.name}}
+          </h4>
+          <div class="d-flex flex-row my-3">
+            <div class="text-warning mb-1 me-2">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span class="ms-1">
+                4.5
+              </span>
+            </div>
+            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+            <span class="text-success ms-2">In stock</span>
+          </div>
+
+          <div class="mb-3">
+            <span class="h5">{{ medicine.price}}</span>
+            <span class="text-muted">/per Tablet</span>
+          </div>
+
+          <p>
+            {{ medicine.description}}
+          </p>
+
+          <div class="row">
+            <dt class="col-3">Type:</dt>
+            <dd class="col-9">{{ medicine.medicine_type}}</dd>
+
+            <dt class="col-3">Medicine_Group:</dt>
+            <dd class="col-9">{{ medicine.category.cat_Name}}</dd>
+
+            <dt class="col-3">Brand</dt>
+            <dd class="col-9">{{ medicine.medicine_company}}</dd>
+          </div>
+
+          <hr />
+
+          <div class="row mb-4">
+            <!-- col.// -->
+            <form method="post" action="{% url 'update_cart' medicine.medicine_id %}">
+              {% csrf_token %}
+              <input type="hidden" name="quantity" value="1">
+              <div class="input-group mb-3" style="width: 170px;">
+                <button class="btn btn-white border border-secondary px-3 decrease-btn" type="button"
+                  data-mdb-ripple-color="dark">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input id="quantity-input" name="dynamic_quantity" type="number"
+                  class="form-control text-center border border-secondary" placeholder="01"
+                  aria-label="Example text with button addon" aria-describedby="button-addon1" min="1" value="1">
+                <!-- Set initial value here -->
+                <button class="btn btn-white border border-secondary px-3 increase-btn" type="button"
+                  data-mdb-ripple-color="dark">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button type="submit" class="btn btn-warning shadow-0"><i class="me-1 fa fa-shopping-basket"></i>
+                Add to Cart</button>
+              <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
+            </form>
+          </div>
+      </main>
+    </div>
+  </div>
+</section>
+<!-- content -->
+
+<section class="bg-light border-top py-4">
+  <div class="container">
+    <div class="row gx-4">
+      <div class="col-lg-8 mb-4">
+        <div class="border rounded-2 px-3 py-2 bg-white">
+          <!-- Pills navs -->
+          <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item d-flex" role="presentation">
+              <a class="nav-link d-flex align-items-center justify-content-center w-100 active" id="ex1-tab-1"
+                data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
+                aria-selected="true">Specification</a>
+            </li>
+          </ul>
+          <!-- Pills navs -->
+
+          <!-- Pills content -->
+          <h1>Specification</h1>
+          <div class="tab-content" id="ex1-content">
+            <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+              <h5>{{ medicine.description_title}}</h5>
+              <p>{{ medicine.description}}</p>
+
+              <h5>{{ medicine.description_title1}}</h5>
+              <p>{{ medicine.description1}}</p>
+
+              <h5>{{ medicine.description_title2}}</h5>
+              <p>{{ medicine.description2}}</p>
+            </div>
+          </div>
+          <!-- Pills content -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="{% static 'assets/script/cart.js' %}"></script>
+{% endblock %}

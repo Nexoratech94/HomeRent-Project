@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
+
+.container .product-item {
+    min-height: 450px;
+    border: 5px solid #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0;
+}
+
+.container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.container .product-item .product {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.container .product-item .product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container .product-item .product .icons .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.container .product-item .product .icons .icon:hover {
+    background-color: #10c775;
+    color: #fff;
+}
+
+.container .product-item .product .icons .icon:nth-last-of-type(3) {
+    transition-delay: 0.2s;
+}
+
+.container .product-item .product .icons .icon:nth-last-of-type(2) {
+    transition-delay: 0.15s;
+}
+
+.container .product-item .product .icons .icon:nth-last-of-type(1) {
+    transition-delay: 0.1s;
+}
+
+.container .product-item:hover .product .icons .icon {
+    transform: translateY(-60px);
+}
+
+.container .product-item .tag {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    padding: 0 0.4rem;
+}
+
+.container .product-item .title {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.container .product-item .fa-star {
+    font-size: 0.65rem;
+    color: #ff0000;
+}
+
+.container .product-item .price {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.bg-green {
+    background-color: #208f20 !important;
+    color: #fff;
+}
+
+.bg-black {
+    background-color: #1f1d1d;
+    color: #fff;
+}
+
+.bg-red {
+    background-color: #bb3535;
+    color: #fff;
+}
+
+button {
+    background-color: #10c775;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0b8e5f;
+}
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 767px) {
+    .container .product-item {
+        min-height: auto;
+        /* Adjust height for mobile */
+    }
+
+    .container .product-item .product {
+        height: 250px;
+        /* Adjust height for mobile */
+    }
+
+    .container .product-item .tag,
+    .container .product-item .title,
+    .container .product-item .price {
+        font-size: 0.8rem;
+        /* Adjust font size for mobile */
+    }
+
+
+    .container .product-item .product {
+        width: 100%;
+        height: 90%;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+
+
+
+}
+
+
+
+/* Path: static/assets/css/room.css */
+/* room.css */
+/*room picture*/
+/* Property */
+#new-property {
+    width: 100%;
+    max-width: 1980px;
+    margin: 100px 0 0 0;
+}
+
+.property-info {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}
+
+.property-info .property-title {
+    font-size: 2.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #505050;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 70%;
+}
+
+.property-btn {
+    background-color: transparent;
+    color: #505050;
+    font-size: 1.5rem;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    min-height: 20px;
+    transition: color 300ms;
+}
+
+.property-btn:hover {
+    color: #000;
+}
+
+#new-property .property-container {
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.property-card {
+    flex-basis: 28%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    box-shadow: 0px 5px 10px rgba(80, 80, 80, 0.20);
+    padding-bottom: 1rem;
+    overflow: hidden;
+}
+
+.property-card:hover .property-img {
+    transform: scale(1.035);
+}
+
+.property-img {
+    flex-basis: 100%;
+    object-fit: cover;
+    transition: 300ms ease;
+}
+
+.card-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.card-details-content {
+    display: flex;
+    text-transform: uppercase;
+    min-height: 20px;
+    justify-self: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-inline: auto;
+    place-items: flex-start;
+}
+
+
+.content {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: start;
+    min-height: 20px;
+    align-items: center;
+}
+
+.content p {
+    font-size: 0.9rem;
+}
+
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-inline: auto;
+    gap: 10px;
+}
+
+.price p {
+    font-size: 1.5rem;
+    flex-basis: 30%;
+}
+
+.booking-btn {
+    color: #fff;
+    background-color: #0e6764;
+    flex-basis: 51%;
+    padding: 0.8rem 2.5rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 16px;
+}
+
+/* Media Queries */
+@media (max-width: 767.5px) {
+    .property-info {
+        width: 100%;
+    }
+
+    .property-btn {
+        width: 100%;
+    }
+
+    .property-card {
+        flex-basis: 48%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .property-card {
+        flex-basis: 100%;
+    }
+}

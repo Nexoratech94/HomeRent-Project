@@ -1,0 +1,311 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>House_details</title>{% endblock %}
+{% block favicon %}
+<link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <br><br>
+    <!--House details section start-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="imagebar">
+                    <div class="col-md-7 mb-4">
+                        <br>
+                        <div id="mainContent">
+                            <img id="mainImage" src="{{ room.image1.url }}" alt="Image 1" class="img-fluid rounded-lg" />
+                            {% if room.video %}
+                            <div id="mainVideo" style="display:none;">
+                                <video width="100%" height="auto" controls>
+                                    <source src="{{ room.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="thumbnails-container d-flex justify-content-around">
+                            <img src="{{ room.image1.url }}" alt="Image 1" onclick="showImage(this.src)" class="thumbnail-image" />
+                            {% if room.image2 %}
+                            <img src="{{ room.image2.url }}" alt="Image 2" onclick="showImage(this.src)" class="thumbnail-image" />
+                            {% endif %}
+                            {% if room.image3 %}
+                            <img src="{{ room.image3.url }}" alt="Image 3" onclick="showImage(this.src)" class="thumbnail-image" />
+                            {% endif %}
+                    
+                            {% if room.video %}
+                            <div class="video-container position-relative">
+                                <video width="100" height="auto" onclick="showVideo()" class="thumbnail-image">
+                                    <source src="{{ room.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <img src="{% static 'images/video.png' %}" alt="Play" class="video-play-button" onclick="showVideo()">
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-5">
+                        <div class="book-form-container">
+                            <p class="book-form-title">Book this Apartment</p>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% if messages %}
+                                <ul>
+                                    {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter your full name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        placeholder="Enter your phone number">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="Enter your Address">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Enter your email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="renter-image" class="form-label">Image of renter</label>
+                                    <input type="file" class="form-control" id="renter-image" name="renter_image">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nid-image" class="form-label">Image of nid(both side)</label>
+                                    <input type="file" class="form-control" id="nid-image" name="nid_image">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="booking-month" class="form-label">Starting Month</label>
+                                    <select class="form-select" id="booking-month" name="booking_month">
+                                        {% for month_value, month_name in MONTH_CHOICES %}
+                                        <option value="{{ month_value }}">{{ month_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="total-member" class="form-label">Total member</label>
+                                    <input type="number" class="form-control" id="total-member" name="total_member"
+                                        placeholder="Select total member">
+                                </div>
+
+                                {% if user.is_authenticated %}
+                                {% if not user.ownerprofile %}
+                                <button type="submit" class="btn btn-primary custom-btn">Book</button>
+                                {% endif %}
+                                {% else %}
+                                <p>Please <a href="{% url 'login' %}">log in</a> to book this room.</p>
+                                {% endif %}
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <div class="con">
+                    <div class="rower">
+                        <div class="col-md-6">
+                            <div class="box">
+                                <div class="section">
+                                    <p class="section-title">Price Details:</p>
+                                    <p>Rent/Month: ৳{{ room.rental_amount }} (negotiable)</p>
+                                    <p>Service Charge: {{ room.service_charge }} Tk per month, subject to change</p>
+                                    <p>Security Deposit: 2 month's rent</p>
+                                    <p>Flat Release Policy: 3 months earlier notice required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box">
+                                <div class="section">
+                                    <p class="section-title">Flat Size:</p>
+                                    <p>{{ room.size }} Sq Feet</p>
+                                </div>
+                                <div class="section">
+                                    <p class="section-title">Floor:</p>
+                                    <p>{{ room.floor_number }} ({{ room.floor_number }}th Floor) (6 storied Building)
+                                        (South Facing Unit)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="box">
+                                <div class="section">
+                                    <p class="section-title">Room details:</p>
+                                    <p>1.{{ room.facility1 }}</p>
+                                    {% if room.facility2 %}
+                                    <p>2.{{ room.facility2 }}</p>
+                                    {% endif %}
+                                    {% if room.facility3 %}
+                                    <p>3.{{ room.facility3 }}</p>
+                                    {% endif %}
+                                    {% if room.facility4 %}
+                                    <p>4.{{ room.facility4 }}</p>
+                                    {% endif %}
+                                    <p>Servant room with attached Toilet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box">
+                                <div class="section">
+                                    <p class="section-title">Additional Facilities:</p>
+                                    {% for line in description_lines %}
+                                    <p>{{ line }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="section">
+                                    <p class="section-title">House Location map:</p>
+                                    {% if room.geolocation and room.location_name %}
+                                    <div id="map-container" style="width: 100%; height: 500px;">
+                                        <iframe width="100%" height="500" frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCigBb_3SOlMAgkSandZFfJx5aI58IYHQc&q={{ room.geolocation.y }},{{ room.geolocation.x }}+{{ room.location_name|urlencode }}&zoom=15"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    {% elif room.geolocation %}
+                                    <div id="map-container" style="width: 100%; height: 500px;">
+                                        <iframe width="100%" height="500" frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCigBb_3SOlMAgkSandZFfJx5aI58IYHQc&q={{ room.geolocation.y }},{{ room.geolocation.x }}&zoom=15"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    {% elif room.location_name %}
+                                    <div id="map-container" style="width: 100%; height: 500px;">
+                                        <iframe width="100%" height="500" frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCigBb_3SOlMAgkSandZFfJx5aI58IYHQc&q={{ room.location_name|urlencode }}&zoom=15"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        No location link available.
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function changeImage(newSrc) {
+            document.getElementById('mainImage').src = newSrc;
+        }
+    </script>
+
+    <style>
+        .book-form-container {
+            margin: auto;
+            width: 80%;
+            padding: 1rem;
+            border: 14px solid #006357;
+            border-radius: 2.5rem;
+            background-color: antiquewhite;
+
+        }
+
+        .custom-btn {
+            background-color: #4fd1c5;
+            border: none;
+            border-radius: 15px;
+            /* Adjust border-radius to your preference */
+            padding: 10px 20px;
+            /* Adjust padding to your preference */
+            font-size: 1rem;
+            /* Adjust font-size to your preference */
+            color: #3c0909;
+            /* Text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 200px;
+        }
+
+        .custom-btn:hover {
+            background-color: #3ab4a0;
+            /* Change color on hover */
+        }
+    </style>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+        
+        function playVideo(roomId) {
+            // Hide all video players
+            const videoPlayers = document.querySelectorAll('.video-player');
+            videoPlayers.forEach(player => {
+                player.style.display = 'none';
+                player.querySelector('video').pause();
+                player.querySelector('video').currentTime = 0;
+            });
+        
+            // Show and play the selected video player
+            const videoPlayer = document.getElementById('video-player-' + roomId);
+            videoPlayer.style.display = 'block';
+            videoPlayer.querySelector('video').play();
+        }
+        </script>
+
+        <script>
+            function showImage(src) {
+                document.getElementById('mainVideo').style.display = 'none';
+                document.getElementById('mainImage').style.display = 'block';
+                document.getElementById('mainImage').src = src;
+            }
+            
+            function showVideo() {
+                document.getElementById('mainImage').style.display = 'none';
+                document.getElementById('mainVideo').style.display = 'block';
+                const videoElement = document.getElementById('mainVideo').querySelector('video');
+                videoElement.play();
+            }
+            </script>
+
+            <style>
+                .video-container {
+                    position: relative;
+                    display: inline-block;
+                }
+                
+                .video-play-button {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 50px;  /* Increased width */
+                    height: 50px;  /* Increased height */
+                    opacity: 0.7;
+                    cursor: pointer;
+                }
+                
+                .video-container:hover .video-play-button {
+                    opacity: 1;
+                }
+            </style>
+            
+</body>
+{% endblock %}

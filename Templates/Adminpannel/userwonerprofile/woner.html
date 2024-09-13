@@ -1,0 +1,156 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}All User_profile{% endblock title%}
+{% block points %}{% endblock %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="container">
+                <!-- end row -->
+                <div class="row">
+                    {% for ownerprofiles in ownerprofiles %}
+                    <div class="col-lg-3">
+                        <div class="text-center card-box">
+                            <div class="member-card pt-2 pb-2">
+                                <div class="thumb-lg member-thumb mx-auto">
+                                    <img src="{{ownerprofiles.profile_image.url}}" class="rounded-circle img-thumbnail"
+                                        alt="profile-image">
+                                </div>
+                                <div class="">
+                                    <h6>{{ ownerprofiles.user }}</h6>
+                                    <h4>{{ ownerprofiles.first_name }} {{ ownerprofiles.last_name }}</h4>
+                                    <p class="text-muted">registration_status: {{ ownerprofiles.registration_status }} <span></span>
+                                    <p class="text-muted">Email: {{ ownerprofiles.email }} <span></span>
+                                    </p>
+                                </div>
+                                <ul class="social-links list-inline">
+                                    <li class="list-inline-item">
+                                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                            data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                            data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                            data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                                    </li>
+                                </ul>
+                                <!-- Pass the user ID to the edit_userprofile view -->
+                                <!-- Pass the user ID to the edit_userprofile view -->
+                                <a href="{% url 'edit_wonerprofile' ownerprofiles.user.id %}" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Edit woner Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* Global Styles */
+    /* Container Styles */
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+
+    .text-muted {
+        color: #98a6ad !important;
+        line-height: 12px;
+    }
+
+    /* Card Styles */
+    .card-box {
+        padding: 20px;
+        border-radius: 3px;
+        margin-bottom: 30px;
+        background-color: #fff;
+        margin-left: 30px;
+    }
+
+    /* Social Links Styles */
+    .social-links li a {
+        border-radius: 50%;
+        color: rgba(121, 121, 121, .8);
+        display: inline-block;
+        height: 30px;
+        line-height: 27px;
+        border: 2px solid rgba(121, 121, 121, .5);
+        text-align: center;
+        width: 30px;
+    }
+
+    .social-links li a:hover {
+        color: #797979;
+        border: 2px solid #797979;
+    }
+
+    /* Thumbnail Styles */
+    .thumb-lg {
+        height: 88px;
+        width: 88px;
+    }
+
+    .img-thumbnail {
+        padding: .25rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: .25rem;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Text Styles */
+    .text-pink {
+        color: #ff679b !important;
+    }
+
+    .btn-rounded {
+        border-radius: 2em;
+    }
+
+    .text-muted {
+        color: #98a6ad !important;
+        line-height: 12px;
+    }
+
+    h4 {
+        line-height: 22px;
+        font-size: 18px;
+    }
+
+    /* Media Queries */
+    @media (min-width: 576px) {
+        .container {
+            max-width: 540px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
+    }
+</style>
+
+{% endblock %}

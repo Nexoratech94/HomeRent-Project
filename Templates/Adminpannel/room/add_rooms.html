@@ -1,0 +1,198 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Add Room</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title mt-5">Add Room</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+							<div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Owner Profile</label>
+                                    <select class="form-control" name="owner_profile">
+                                        <option value="">Select Owner Profile</option>
+                                        {% for owner_profile in owner_profiles %}
+                                            <option value="{{ owner_profile.pk }}">{{ owner_profile.first_name }} {{ owner_profile.last_name }} - {{ owner_profile.user.username }}</option>
+                                        {% endfor %}
+                                        <!-- Include superuser username if logged in as a superuser -->
+                                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                                            <option value="superuser">Administrator - {{ request.user.username }}</option>
+                                        {% endif %}
+                                    </select>       
+                                </div>
+                            </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Category</label>
+									<select class="form-control" name="category">
+										{% for category in categories %}
+											<option value="{{ category.pk }}">{{ category.category_name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Location</label>
+									<select class="form-control" name="location">
+										{% for location in locations %}
+											<option value="{{ location.pk }}">{{ location.area_location }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>House Type</label>
+									<input class="form-control" type="text" name="house_type">
+								</div>
+							</div>
+														
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>House Number</label>
+                                    <input class="form-control" type="text" name="house_number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Road Number</label>
+                                    <input class="form-control" type="text" name="road_number">
+                                </div>
+                            </div>
+                            <!-- Add more input fields for other room attributes -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bedrooms</label>
+                                    <select class="form-control" name="bedrooms">
+                                        <option value="1">1 Bedroom</option>
+                                        <option value="2">2 Bedrooms</option>
+                                        <option value="3">3 Bedrooms</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Size</label>
+                                    <input class="form-control" type="text" name="size">
+                                </div>
+                            </div>
+
+							<div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Floor Number</label>
+                                    <input class="form-control" type="text" name="floor_number">
+                                </div>
+                            </div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Block Number</label>
+									<input class="form-control" type="text" name="block_number">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Street</label>
+									<input class="form-control" type="text" name="street">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Special Identification</label>
+									<input class="form-control" type="text" name="special_identification">
+								</div>
+							</div>							
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Rental Amount</label>
+                                    <input class="form-control" type="number" name="rental_amount">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Service Charge</label>
+                                    <input class="form-control" type="number" name="service_charge">
+                                </div>
+                            </div>
+
+							<div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control" type="text" name="description">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Geolocation</label>
+                                    <input class="form-control" type="text" name="geolocation" value="{{ form.geolocation.value|default_if_none:'0.0,0.0' }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Location Name</label>
+                                    <input class="form-control" type="text" name="location_name" value="{{ form.location_name.value|default_if_none:'' }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 1</label>
+                                    <input class="form-control" type="text" name="facility1">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 2</label>
+                                    <input class="form-control" type="text" name="facility2">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 3</label>
+                                    <input class="form-control" type="text" name="facility3">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Facility 4</label>
+                                    <input class="form-control" type="text" name="facility4">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Images</label>
+                                    <input type="file" class="form-control-file" name="image1" accept="image/*">
+                                    <input type="file" class="form-control-file" name="image2" accept="image/*">
+                                    <input type="file" class="form-control-file" name="image3" accept="image/*">
+                                    <label for="file">Video<input type="file" class="form-control-file" name="video" accept="video/*"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{% url 'rooms' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

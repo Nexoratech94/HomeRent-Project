@@ -1,0 +1,45 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Medicine</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+<body>
+    <div class="main-wrapper">
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="mt-5">
+                                <h4 class="card-title float-left mt-2">Medicine</h4> <a href="{% url 'add_medicine' %}" class="btn btn-primary float-right veiwbutton">Add Medicine</a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for medicine in medicines %}
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                            <div class="card"> 
+                                <img class="card-img" src="{{medicine.medicine_image.url}}" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{medicine.name}}</h4>
+                                    <p class="card-text mt-3"></p>{{ medicine.description|linebreaksbr|truncatewords:10 }} 
+                                    <a href="{% url 'edit_medicine' medicine_id=medicine.medicine_id %}" class="btn btn-info">Edit Medicine</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
+        });
+    });
+    </script>
+</body>
+{% endblock %}

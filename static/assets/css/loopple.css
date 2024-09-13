@@ -1,0 +1,900 @@
+/* Loopple Alert */
+.loopple-alert {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.loopple-alert.loopple-alert-gradient-dark {
+  color: #fff;
+  border-color: #45484b;
+  background: linear-gradient(87deg, #212529 0, #212229 100%) !important;
+}
+
+.brand {
+  font-size: 20px;
+}
+
+
+.loopple-alert.loopple-alert-dismissible .close {
+  top: 50%;
+  right: 24px;
+  padding: 0;
+  transform: translateY(-50%);
+  opacity: 1;
+  position: absolute;
+  color: inherit;
+  border: 0;
+  background: transparent;
+}
+
+.loopple-alert.loopple-alert-dismissible .close span {
+  color: #fff;
+}
+
+
+
+.navbar-nav li {
+  color: black;
+  /* Change 'black' to the desired text color */
+}
+
+.loopple-fade {
+  transition: opacity 0.15s linear;
+}
+
+/* Loopple Button */
+.loopple-btn {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  transition: all 0.15s ease;
+  padding: 10px 20px;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  will-change: transform;
+}
+
+.loopple-btn.loopple-btn-white {
+  color: #212529;
+  border-color: #fff;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.loopple-btn.loopple-btn-white:hover {
+  color: #212529;
+  border-color: #fff;
+  background-color: #fff;
+}
+
+.loopple-btn.loopple-btn-white:focus,
+.loopple-btn.loopple-btn-white.focus {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(255, 255, 255, 0.5) l;
+}
+
+.loopple-btn.loopple-btn-white:not(:disabled):not(.disabled):active,
+.loopple-btn.loopple-btn-white:not(:disabled):not(.disabled).active {
+  color: #212529;
+  border-color: #fff;
+  background-color: #e6e6e6;
+}
+
+/* Loopple Utilities */
+.loopple-position-absolute {
+  position: absolute;
+}
+
+.loopple-position-sticky {
+  position: sticky;
+}
+
+.loopple-position-fixed {
+  position: fixed;
+}
+
+.loopple-z-index-9999 {
+  z-index: 9999;
+}
+
+.loopple-bottom-2 {
+  bottom: 8px;
+}
+
+.loopple-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.loopple-text-center {
+  text-align: center;
+}
+
+.loopple-right-0 {
+  right: 0;
+}
+
+.loopple-left-0 {
+  left: 0;
+}
+
+.loopple-w-50 {
+  width: 50%;
+}
+
+.loopple-ml-1,
+.loopple-mx-1 {
+  margin-left: 4px;
+}
+
+.loopple-ml-2,
+.loopple-mx-2 {
+  margin-left: 8px;
+}
+
+.loopple-opacity-0 {
+  opacity: 0;
+}
+
+/* Loopple Badge */
+.loopple-badge {
+  position: fixed;
+  font-size: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-block;
+  bottom: 2% !important;
+  right: 1% !important;
+  padding: 5.5px 6px;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+  border-radius: 6px;
+}
+
+
+
+
+/* Path: assets/css/loopple.css */
+/* profile .css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ 
+
+section {
+  background-color: #eee;
+}
+
+.container {
+  padding-top: 50px;
+  margin: 0px 0px 0px 0px;
+}
+
+.row1 {
+  margin-bottom: 20px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.breadcrumb {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.progress {
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.fa-lg {
+  font-size: 1.5rem;
+}
+
+.text-warning {
+  color: #ffc107;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+/* Additional Styles */
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-color: #ffffff;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  color: #6c757d;
+}
+
+.card-text {
+  color: #495057;
+}
+
+hr {
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-primary:focus,
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary:active,
+.btn-outline-primary:active {
+  background-color: #004080;
+  border-color: #004080;
+}
+
+
+/* Path: assets/css/cheackout.css */
+/* cheackout .css */
+/* More Custom CSS for the Checkout Form */
+
+/* Style for the entire form */
+form {
+  margin-bottom: 2rem;
+}
+
+/* Style for the billing address and payment sections */
+.col-md-8.order-md-1,
+.col-md-4.order-md-2 {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+}
+
+/* Style for the form labels */
+label {
+  font-weight: bold;
+}
+
+/* Style for the form inputs */
+.form-control {
+  border-radius: 0.25rem;
+}
+
+/* Style for the invalid feedback messages */
+.invalid-feedback {
+  display: none;
+  color: #dc3545;
+}
+
+/* Show invalid feedback message when input is invalid */
+.form-control.is-invalid~.invalid-feedback {
+  display: block;
+}
+
+/* Style for the checkbox labels */
+.custom-control-label::before {
+  border: 1px solid #adb5bd;
+  border-radius: 0.25rem;
+}
+
+/* Style for the checkbox input */
+.custom-control-input:checked~.custom-control-label::before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Style for the checkbox input when disabled */
+.custom-control-input:disabled~.custom-control-label::before {
+  background-color: #e9ecef;
+}
+
+/* Style for the checkbox input when focused */
+.custom-control-input:focus~.custom-control-label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style for the checkbox input when checked and focused */
+.custom-control-input:checked:focus~.custom-control-label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style for the checkbox input when disabled and focused */
+.custom-control-input:disabled:focus~.custom-control-label::before {
+  box-shadow: none;
+}
+
+/* Style for the continue to checkout button */
+.btn-primary {
+  border-radius: 0.25rem;
+}
+
+/* Style for the continue to checkout button on hover */
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Style for the continue to checkout button when focused */
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.checkout {
+  background-color: bisque;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  margin-top: 0%;
+}
+
+
+
+/* Path: assets/css/blog.css */
+/* blog.css */
+
+
+.container-blog {
+  width: 100%;
+  max-width: 1200px;
+  margin: 75px auto;
+  padding: 20px;
+}
+
+body {
+  margin-top: 20px;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.bg-gray {
+  background-color: #ebf4fa;
+}
+
+/* Blog */
+.card {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.card-img-top {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-img-top .date {
+  position: absolute;
+  background: #3a3973;
+  color: #ffffff;
+  padding: 8px 15px;
+  left: 0;
+  top: 10px;
+  font-size: 14px;
+}
+
+.card-body {
+  box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+  border-radius: 5px;
+  background: #ffffff;
+  padding: 20px;
+  margin: -30px 20px 0;
+  position: relative;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.card-title a {
+  color: #3a3973;
+}
+
+.card-text {
+  margin: 0;
+}
+
+.btn-bar {
+  margin-top: 20px;
+}
+
+.px-btn-arrow {
+  padding: 0 50px 0 0;
+  line-height: 20px;
+  position: relative;
+  display: inline-block;
+  color: #fe4f6c;
+  transition: ease all 0.3s;
+}
+
+.px-btn-arrow .arrow {
+  width: 13px;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 25px;
+  transition: ease right 0.3s;
+}
+
+.px-btn-arrow .arrow:after {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: 0;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+
+
+
+/* Path: assets/css/bloDETAILS.css */
+/* BLOGDETAILS.css */
+/* More Custom CSS for the Invoice Form */
+.gray-bg {
+  background-color: #f5f5f5;
+}
+/* Blog 
+---------------------*/
+.blog-grid {
+box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+border-radius: 5px;
+overflow: hidden;
+background: #ffffff;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+.blog-grid .blog-img {
+position: relative;
+}
+.blog-grid .blog-img .date {
+position: absolute;
+background: #fc5356;
+color: #ffffff;
+padding: 8px 15px;
+left: 10px;
+top: 10px;
+border-radius: 4px;
+}
+.blog-grid .blog-img .date span {
+font-size: 22px;
+display: block;
+line-height: 22px;
+font-weight: 700;
+}
+.blog-grid .blog-img .date label {
+font-size: 14px;
+margin: 0;
+}
+.blog-grid .blog-info {
+padding: 20px;
+}
+.blog-grid .blog-info h5 {
+font-size: 22px;
+font-weight: 700;
+margin: 0 0 10px;
+}
+.blog-grid .blog-info h5 a {
+color: #20247b;
+}
+.blog-grid .blog-info p {
+margin: 0;
+}
+.blog-grid .blog-info .btn-bar {
+margin-top: 20px;
+}
+
+
+/* Blog Sidebar
+-------------------*/
+.blog-aside .widget {
+box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+border-radius: 5px;
+overflow: hidden;
+background: #ffffff;
+margin-top: 15px;
+margin-bottom: 15px;
+width: 100%;
+display: inline-block;
+vertical-align: top;
+}
+.blog-aside .widget-body {
+padding: 15px;
+}
+.blog-aside .widget-title {
+padding: 15px;
+border-bottom: 1px solid #eee;
+}
+.blog-aside .widget-title h3 {
+font-size: 20px;
+font-weight: 700;
+color: #fc5356;
+margin: 0;
+}
+.blog-aside .widget-author .media {
+margin-bottom: 15px;
+}
+.blog-aside .widget-author p {
+font-size: 16px;
+margin: 0;
+}
+.blog-aside .widget-author .avatar {
+width: 70px;
+height: 70px;
+border-radius: 50%;
+overflow: hidden;
+}
+.blog-aside .widget-author h6 {
+font-weight: 600;
+color: #20247b;
+font-size: 22px;
+margin: 0;
+padding-left: 20px;
+}
+.blog-aside .post-aside {
+margin-bottom: 15px;
+}
+.blog-aside .post-aside .post-aside-title h5 {
+margin: 0;
+}
+.blog-aside .post-aside .post-aside-title a {
+font-size: 18px;
+color: #20247b;
+font-weight: 600;
+}
+.blog-aside .post-aside .post-aside-meta {
+padding-bottom: 10px;
+}
+.blog-aside .post-aside .post-aside-meta a {
+color: #6F8BA4;
+font-size: 12px;
+text-transform: uppercase;
+display: inline-block;
+margin-right: 10px;
+}
+.blog-aside .latest-post-aside + .latest-post-aside {
+border-top: 1px solid #eee;
+padding-top: 15px;
+margin-top: 15px;
+}
+.blog-aside .latest-post-aside .lpa-right {
+width: 90px;
+}
+.blog-aside .latest-post-aside .lpa-right img {
+border-radius: 3px;
+}
+.blog-aside .latest-post-aside .lpa-left {
+padding-right: 15px;
+}
+.blog-aside .latest-post-aside .lpa-title h5 {
+margin: 0;
+font-size: 15px;
+}
+.blog-aside .latest-post-aside .lpa-title a {
+color: #20247b;
+font-weight: 600;
+}
+.blog-aside .latest-post-aside .lpa-meta a {
+color: #6F8BA4;
+font-size: 12px;
+text-transform: uppercase;
+display: inline-block;
+margin-right: 10px;
+}
+
+.tag-cloud a {
+padding: 4px 15px;
+font-size: 13px;
+color: #ffffff;
+background: #20247b;
+border-radius: 3px;
+margin-right: 4px;
+margin-bottom: 4px;
+}
+.tag-cloud a:hover {
+background: #fc5356;
+}
+
+.blog-single {
+padding-top: 30px;
+padding-bottom: 30px;
+}
+
+.article {
+box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+border-radius: 5px;
+overflow: hidden;
+background: #ffffff;
+padding: 15px;
+margin: 15px 0 30px;
+}
+.article .article-title {
+padding: 15px 0 20px;
+}
+.article .article-title h6 {
+font-size: 14px;
+font-weight: 700;
+margin-bottom: 20px;
+}
+.article .article-title h6 a {
+text-transform: uppercase;
+color: #fc5356;
+border-bottom: 1px solid #fc5356;
+}
+.article .article-title h2 {
+color: #20247b;
+font-weight: 600;
+}
+.article .article-title .media {
+padding-top: 15px;
+border-bottom: 1px dashed #ddd;
+padding-bottom: 20px;
+}
+.article .article-title .media .avatar {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+overflow: hidden;
+}
+.article .article-title .media .media-body {
+padding-left: 8px;
+}
+.article .article-title .media .media-body label {
+font-weight: 600;
+color: #fc5356;
+margin: 0;
+}
+.article .article-title .media .media-body span {
+display: block;
+font-size: 12px;
+}
+.article .article-content h1,
+.article .article-content h2,
+.article .article-content h3,
+.article .article-content h4,
+.article .article-content h5,
+.article .article-content h6 {
+color: #20247b;
+font-weight: 600;
+margin-bottom: 15px;
+}
+.article .article-content blockquote {
+max-width: 600px;
+padding: 15px 0 30px 0;
+margin: 0;
+}
+.article .article-content blockquote p {
+font-size: 20px;
+font-weight: 500;
+color: #fc5356;
+margin: 0;
+}
+.article .article-content blockquote .blockquote-footer {
+color: #20247b;
+font-size: 16px;
+}
+.article .article-content blockquote .blockquote-footer cite {
+font-weight: 600;
+}
+.article .tag-cloud {
+padding-top: 10px;
+}
+
+.article-comment {
+box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+border-radius: 5px;
+overflow: hidden;
+background: #ffffff;
+padding: 20px;
+}
+.article-comment h4 {
+color: #20247b;
+font-weight: 700;
+margin-bottom: 25px;
+font-size: 22px;
+}
+img {
+  max-width: 100%;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+/* Contact Us
+---------------------*/
+.contact-name {
+margin-bottom: 30px;
+}
+.contact-name h5 {
+font-size: 22px;
+color: #20247b;
+margin-bottom: 5px;
+font-weight: 600;
+}
+.contact-name p {
+font-size: 18px;
+margin: 0;
+}
+
+.social-share a {
+width: 40px;
+height: 40px;
+line-height: 40px;
+border-radius: 50%;
+color: #ffffff;
+text-align: center;
+margin-right: 10px;
+}
+.social-share .dribbble {
+box-shadow: 0 8px 30px -4px rgba(234, 76, 137, 0.5);
+background-color: #ea4c89;
+}
+.social-share .behance {
+box-shadow: 0 8px 30px -4px rgba(0, 103, 255, 0.5);
+background-color: #0067ff;
+}
+.social-share .linkedin {
+box-shadow: 0 8px 30px -4px rgba(1, 119, 172, 0.5);
+background-color: #0177ac;
+}
+
+.contact-form .form-control {
+border: none;
+border-bottom: 1px solid #20247b;
+background: transparent;
+border-radius: 0;
+padding-left: 0;
+box-shadow: none !important;
+}
+.contact-form .form-control:focus {
+border-bottom: 1px solid #fc5356;
+}
+.contact-form .form-control.invalid {
+border-bottom: 1px solid #ff0000;
+}
+.contact-form .send {
+margin-top: 20px;
+}
+@media (max-width: 767px) {
+.contact-form .send {
+  margin-bottom: 20px;
+}
+}
+
+.section-title h2 {
+  font-weight: 700;
+  color: #20247b;
+  font-size: 45px;
+  margin: 0 0 15px;
+  border-left: 5px solid #fc5356;
+  padding-left: 15px;
+}
+.section-title {
+  padding-bottom: 45px;
+}
+.contact-form .send {
+  margin-top: 20px;
+}
+.px-btn {
+  padding: 0 50px 0 20px;
+  line-height: 60px;
+  position: relative;
+  display: inline-block;
+  color: #20247b;
+  background: none;
+  border: none;
+}
+.px-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 30px;
+  background: transparent;
+  border: 1px solid rgba(252, 83, 86, 0.6);
+  border-right: 1px solid transparent;
+  -moz-transition: ease all 0.35s;
+  -o-transition: ease all 0.35s;
+  -webkit-transition: ease all 0.35s;
+  transition: ease all 0.35s;
+  width: 60px;
+  height: 60px;
+}
+.px-btn .arrow {
+  width: 13px;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 25px;
+}
+.px-btn .arrow:after {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: 0;
+  display: inline-block;
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+/* Path: assets/css/ecommerc.css */
+/* ecommerc.css */
+/* More Custom CSS for the E-commerce Form */

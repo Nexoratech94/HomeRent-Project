@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+    <title>Total Room Bookings</title>
+    {% endblock %}
+
+    {% block favicon %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">
+    {% endblock %}
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .total-amount {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .view-button {
+            margin-top: 30px;
+        }
+
+        .btn-view {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-info:hover {
+            background-color: #117a8b;
+            border-color: #117a8b;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Your Room Bookings</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>House Number</th>
+                            <th>Category</th>
+                            <th>Bedrooms</th>
+                            <th>Month</th>
+                            <th>Booking Date</th>
+                            <th>Total Members</th>
+                            <th>User Profile</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>#{{ booking.booking_id }}</td>
+                            <td>{{ booking.room.house_number }}</td>
+                            <td>{{ booking.room.category.category_name }}</td>
+                            <td>{{ booking.room.get_bedrooms_display }}</td>
+                            <td>{{ booking.get_booking_month_display }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{ booking.total_member }}</td>
+                            <td>{{ booking.user_profile.user.username }}</td>
+                            <td style="color: #17a2b8;">{{ booking.get_booking_status_display }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center view-button">
+            <a href="{% url 'profile' %}" class="btn btn-back"><i class="fas fa-arrow-left"></i> Back to Profile</a>
+        </div>
+    </div>
+</body>
+</html>

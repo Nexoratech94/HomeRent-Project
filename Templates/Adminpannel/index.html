@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="{% static 'admin/asset/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/asset/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/asset/plugins/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/asset/css/feathericon.min.css' %}">
+	<link rel="stylehseet" href="https://cdn.oesmith.co.uk/morris-0.5.1">
+	<link rel="stylesheet" href="{% static 'admin/asset/plugins/morris/morris.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/asset/css/style.css' %}">
+	{% block title %}<title>Dashboard</title>{% endblock %}
+    {% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+</head>
+
+<body>
+	<div class="main-wrapper">
+		<div class="header">
+			<div class="header-left">
+				<a href="{% url 'admin_pannel' %}" class="logo"> <img src="{% static 'logo/logo.png' %}" width="50"
+						height="70" alt="logo"> <span class="logoclass">EasyRent</span> </a>
+				<a href="{% url 'admin_pannel' %}" class="logo logo-small"> <img src="{% static 'logo/logo.png' %}"
+						alt="Logo" width="30" height="30"></a>
+			</div>
+			<a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
+			<a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
+			<ul class="nav user-menu">
+				<li class="nav-item dropdown noti-dropdown">
+					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <i class="fe fe-bell"></i>
+						<span class="badge badge-pill">0</span> </a>
+					 
+				</li>
+				<li class="nav-item dropdown has-arrow">
+					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						<span class="user-img">
+							<img class="rounded-circle" src="{% static 'logo/admin.jpg' %}" width="31" alt="{{super_username}}">
+						</span>
+					</a>
+					<div class="dropdown-menu">
+						<div class="user-header">
+							<div class="avatar avatar-sm">
+								<img src="{% static 'logo/admin.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
+							</div>
+							<div class="user-text">
+								<h6>{{ super_username }}</h6>
+								<p class="text-muted mb-0">Administrator</p>
+							</div>
+						</div>
+
+						<a class="dropdown-item" href="{% url 'admin_logout'%}">Logout</a>
+					</div>
+				</li>				
+			</ul>
+			<div class="top-nav-search">
+				<form>
+					<input type="text" class="form-control" placeholder="Search here">
+					<button class="btn" type="submit"><i class="fas fa-search"></i></button>
+				</form>
+			</div>
+		</div>
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+						<li class="active"> <a href="{% url 'admin_pannel' %}"><i class="fas fa-tachometer-alt"></i>
+								<span>Dashboard</span></a> </li>
+						<li class="list-divider"></li>
+						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span> Booking </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'all_booking' %}"> All Booking Request </a></li>
+								<li><a href="{% url 'Accept_all_booking' %}"> All Booking</a></li>
+								<li><a href="{% url 'edit_booking' %}"> Edit Booking </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'userlist' %}"> All customers </a></li>
+								<li><a href="{%url 'wonerlist' %}">All Woner </a></li>
+								<li><a href="{% url 'add_user' %}"> Add Customer </a></li>
+								<li><a href="{% url 'add_woners' %}"> Add Woner </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fas fa-key"></i> <span> Rooms </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'rooms' %}">All Rooms </a></li>
+								<li><a href="{% url 'add_rooms' %}"> Add Rooms </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Staff </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'all_staff'%}">All Staff </a></li>
+								<li><a href="{% url 'addStaff' %}"> Add Staff </a></li>
+							</ul>
+						</li>
+						
+
+						<li class="submenu"> <a href="#"><i class="fas fa-shopping-bag"></i><span> Ecommerce </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li class="submenu"> <a href="#"><i class="fab fa-first-order"></i> <span> Order_List
+										</span> <span class="menu-arrow"></span></a>
+									<ul class="submenu_class" style="display: none;">
+										<li><a href="{% url 'orderlist' %}"> Order_List </a></li>
+										<li><a href="{% url 'paidorder' %}">Paid Order</a></li>
+									</ul>
+								</li>
+
+								<li class="submenu"> <a href="#">
+									<i class="fab fa-product-hunt"></i> <span> medicine
+										</span> <span class="menu-arrow"></span></a>
+									<ul class="submenu_class" style="display: none;">
+										<li><a href="{% url 'add_medicine' %}"> Add medicine </a></li>
+										<li><a href="{% url 'medicine_list' %}">View medicine</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						
+						<li class="submenu"> 
+							<a href="#" onclick="showMessage(event)">
+								<i class="fas fa-user"></i> 
+								<span> Employees(Upcoming) </span> 
+								<span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="employees.html" class="disabled-item">Employees List</a></li>
+								<li><a href="leaves.html" class="disabled-item">Leaves</a></li>
+								<li><a href="holidays.html" class="disabled-item">Holidays</a></li>
+								<li><a href="attendance.html" class="disabled-item">Attendance</a></li>
+							</ul>
+							
+						</li>
+						 
+
+						<li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts(Upcoming)  </span>
+								<span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="invoices.html" class="disabled-item">Invoices </a></li>
+								<li><a href="payments.html" class="disabled-item">Payments </a></li>
+								<li><a href="expenses.html" class="disabled-item">Expenses </a></li>
+								<li><a href="taxes.html" class="disabled-item">Taxes </a></li>
+								<li><a href="provident-fund.html" class="disabled-item">Provident Fund </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fas fa-book"></i> <span> Message </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'adminmassge' %}">Message List </a></li>
+ 
+							</ul>
+						</li>
+						<li> <a href="{% url 'calendar'%}"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a> </li>
+						<li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Blog </span> <span
+									class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{% url 'adminblog' %}">Blog </a></li>
+								<li><a href="{% url 'add_blog' %}">Add Blog </a></li>
+								 
+							</ul>
+						</li>
+						 
+						 
+						<li> <a href="{% url 'maintain' %}"><i class="fas fa-cog"></i> <span>Settings</span></a> </li>
+						<li class="list-divider"></li>
+
+						<li class="list-divider"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{% block content %}{% endblock %}
+		{%block points%}
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-sm-12 mt-5">
+							<h3 class="page-title mt-3">Good Morning {{ super_username }}!</h3>
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item active">Dashboard</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{ total_accepted_bookings }}</h3>
+										<h6 class="text-muted">Bookings</h6>
+									</div>
+
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-user-plus">
+												<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+												<circle cx="8.5" cy="7" r="4"></circle>
+												<line x1="20" y1="8" x2="20" y2="14"></line>
+												<line x1="23" y1="11" x2="17" y2="11"></line>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{ total_available_rooms }}</h3>
+										<h6 class="text-muted">Available Rooms</h6>
+									</div>
+
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-dollar-sign">
+												<line x1="12" y1="1" x2="12" y2="23"></line>
+												<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+											</svg></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{ total_registered_owners }}</h3>
+										<h6 class="text-muted">Total Owners</h6>
+									</div>
+									
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-file-plus">
+												<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+												</path>
+												<polyline points="14 2 14 8 20 8"></polyline>
+												<line x1="12" y1="18" x2="12" y2="12"></line>
+												<line x1="9" y1="15" x2="15" y2="15"></line>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{total_registered_renters}}</h3>
+										<h6 class="text-muted">Total Renter</h6>
+									</div>
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-globe">
+												<circle cx="12" cy="12" r="10"></circle>
+												<line x1="2" y1="12" x2="22" y2="12"></line>
+												<path
+													d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+												</path>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{total_orders}}</h3>
+										<h6 class="text-muted">Total Order</h6>
+									</div>
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-user-plus">
+												<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+												<circle cx="8.5" cy="7" r="4"></circle>
+												<line x1="20" y1="8" x2="20" y2="14"></line>
+												<line x1="23" y1="11" x2="17" y2="11"></line>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{pending_orders_count}}</h3>
+										<h6 class="text-muted">Pending Order</h6>
+									</div>
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-globe">
+												<circle cx="12" cy="12" r="10"></circle>
+												<line x1="2" y1="12" x2="22" y2="12"></line>
+												<path
+													d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+												</path>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{ total_carts }}</h3>
+										<h6 class="text-muted">Total Carts</h6>
+									</div>
+									
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-globe">
+												<circle cx="12" cy="12" r="10"></circle>
+												<line x1="2" y1="12" x2="22" y2="12"></line>
+												<path
+													d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+												</path>
+											</svg></span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">{{total_amount}}</h3>
+										<h6 class="text-muted">Total_amount</h6>
+									</div>
+									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><svg
+												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												viewbox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-dollar-sign">
+												<line x1="12" y1="1" x2="12" y2="23"></line>
+												<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+											</svg></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-lg-6">
+						<div class="card card-chart">
+							<div class="card-header">
+								<h4 class="card-title">VISITORS</h4>
+							</div>
+							<div class="card-body">
+								<div id="line-chart"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6">
+						<div class="card card-chart">
+							<div class="card-header">
+								<h4 class="card-title">ROOMS BOOKED</h4>
+							</div>
+							<div class="card-body">
+								<div id="donut-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 d-flex">
+						<div class="card card-table flex-fill">
+							<div class="card-header">
+								<h4 class="card-title float-left mt-2">Booking</h4>
+								<a href="{% url 'all_booking' %}"><button type="button" class="btn btn-primary float-right veiwbutton">Veiw All</button></a>							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-hover table-center">
+										<thead>
+											<tr style="text-align: center;">
+												<th>Booking ID</th>
+												<th>Name</th>
+												<th>Email ID</th>
+												<th>Month</th>
+												<th class="text-center">Room Type</th>
+												<th class="text-right">Number</th>
+												<th class="text-center">Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for booking in booking %}
+											<tr style="text-align: center;">
+												<td class="text-nowrap">
+													<div>RM-{{ booking.booking_id }}</div>
+												</td>
+												<td class="text-nowrap">{{ booking.name }}</td>
+												<td><a href="mailto:{{ booking.email }}" class="__cf_email__"
+														data-cfemail="1c7f7d6e73706572707d72795c7b717d7570327f7371">{{ booking.email }}</a>
+												</td>
+												<td>{{ booking.booking_month }}</td>
+												<td class="text-center">{{ booking.room.house_type }}</td>
+												<td class="text-right">
+													<div>{{ booking.phone }}</div>
+												</td>
+												<td class="text-center">
+													{% if booking.booking_status == 'accept' %}
+													<span class="badge badge-pill bg-success inv-badge">ACCEPTED</span>
+													{% elif booking.booking_status == 'reject' %}
+													<span class="badge badge-pill bg-danger inv-badge">REJECTED</span>
+													{% else %}
+													<span class="badge badge-pill bg-warning inv-badge">PENDING</span>
+													{% endif %}
+												</td>
+											</tr>
+											{% empty %}
+											<tr>
+												<td colspan="7" class="text-center">No bookings available</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+										
+									</table>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{%endblock%}
+	</div>
+	<script data-cfasync="false"
+		src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+	<script src="{% static 'admin/asset/js/jquery-3.5.1.min.js' %}"></script>
+	<script src="{% static 'admin/asset/js/popper.min.js' %}"></script>
+	<script src="{% static 'admin/asset/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'admin/asset/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+	<script src="{% static 'admin/asset/plugins/raphael/raphael.min.js' %}"></script>
+	<script src="{% static 'admin/asset/plugins/morris/morris.min.js' %}"></script>
+	<script src="{% static 'admin/asset/js/chart.morris.js' %}"></script>
+	<script src="{% static 'admin/asset/js/script.js' %}"></script>
+	<style>
+		.disabled {
+			pointer-events: none; /* Disable pointer events */
+			opacity: 0.5; /* Reduce opacity to visually indicate disabled state */
+		}
+
+		.disabled-item {
+			pointer-events: none; /* Disable pointer events */
+			color: #999; /* Optionally, change text color to indicate disabled state */
+			text-decoration: none; /* Optionally, remove underline */
+			cursor: default; /* Optionally, change cursor to default */
+		}
+		
+	</style>
+</body>
+
+</html>

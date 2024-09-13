@@ -1,0 +1,61 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Blog</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+
+<body>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<div class="mt-5">
+								<h4 class="card-title float-left mt-2">Blog</h4> <a href="{% url 'add_blog' %}"
+									class="btn btn-primary float-right veiwbutton">Add Blog</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					{% for blog in blogs %}
+					<div class="col-12 col-sm-8 col-md-6 col-lg-4">
+						<div class="card"> <img class="card-img" src="{{blog.blog_image.url}}" alt="">
+							<div class="card-body">
+								<h4 class="card-title">{{blog.title}}</h4>
+								<p class="card-text mt-3"></p>{{ blog.content_1|linebreaksbr|truncatewords:25 }}</p>
+								<div class="btn-group">
+									<a href="{% url 'edit_blog' id=blog.id %}" class="btn btn-info">Edit Blog</a>
+									<form action="{% url 'delete_blog' id=blog.id %}" method="POST">
+										{% csrf_token %}
+										<button type="submit" class="btn btn-danger">Delete Blog</button>
+									</form>
+								</div>								
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			$('#datetimepicker3').datetimepicker({
+				format: 'LT'
+			});
+		});
+	</script>
+
+	<style>
+		.btn-group {
+			display: flex;
+			gap: 10px; /* Adjust the gap between buttons as needed */
+		}
+		
+	</style>
+</body>
+
+{% endblock %}

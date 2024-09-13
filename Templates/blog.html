@@ -1,0 +1,56 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Blog</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <br>
+    <!--banner section start-->
+    <section class="section bg-light" id="blog">
+        <div class="container-blog" style="margin: 75px auto;">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 text-center">
+                    <div class="section-title">
+                        <h2>Latest Blog</h2>
+                        <p>A blog post is a piece of writing typically published on a website's blog that presents
+                            information, opinions, experiences, or insights on a particular topic. Blog posts vary in
+                            length. And can include text, images, or videos, depending on the topic.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for post in blog_posts %}
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <img src="{{ post.blog_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'blogdetails' post.id %}">{{ post.title }}</a></h5>
+                            <p class="card-text">{{ post.content|truncatechars:100 }}</p>
+                            <a href="{% url 'blogdetails' post.id %}" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}
+
+<style>
+    #primary-header.navbar {
+        z-index: 9;
+        padding-top: 0;
+    }
+
+    .shadow-none {
+        box-shadow: none !important;
+    }
+
+    .fixed-top {
+        position: fixed;
+        z-index: 1030;
+    }
+</style>

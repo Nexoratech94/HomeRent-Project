@@ -1,0 +1,72 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Cart</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <div class="addcart">
+        <div class="shopping-cart">
+            <div class="cart-items">
+                {% if cart_items %}
+                {% for cart_item in cart_items %}
+                <div class="item1">
+                    <div class="item-image">
+                        <img src="{{ cart_item.medicine.medicine_image.url }}" alt="{{ cart_item.medicine.name }}">
+                    </div>
+                    <div class="item-details">
+                        <h4 class="item-title">{{ cart_item.medicine.name }}</h4>
+                        <p class="item-description">Price: {{ cart_item.medicine.price }} BDT</p>
+                        <p class="item-description">Quantity: {{ cart_item.quantity }}</p>
+                        <p class="item-description">Total Price: {{ cart_item.total_price }} BDT</p>
+                        <!-- Display total price here -->
+                    </div>
+                    <form method="post" action="{% url 'update_cart_item' %}" style="display: flex;">
+                        {% csrf_token %}
+                        <input type="hidden" name="cart_item_id" value="{{ cart_item.id }}">
+                        <button class="action-btn decrease" type="submit" name="quantity_change" value="-1">-</button>
+                        <span class="quantity">{{ cart_item.quantity }}</span>
+                        <button class="action-btn increase" type="submit" name="quantity_change" value="1">+</button>
+                    </form>
+                    <div class="item-price">BDT{{ cart_item.price }}</div>
+                    <!-- Add functionality to remove item from cart if needed -->
+                    <a href="{% url 'remove' cart_item.medicine_id %}"><button class="remove-btn">&times;</button></a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>Your cart is empty.</p>
+                {% endif %}
+            </div>
+            <div class="cart-summary">
+                <h3 class="summary-title">Summary</h3>
+                <div class="summary-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Items</span>
+                        <span class="detail-value">{{ cart_items.count }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Subtotal</span>
+                        <span class="detail-value subtotal">BDT {{ subtotal|floatformat:"2" }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Shipping</span>
+                        <select class="shipping-method">
+                            <option value="{{ delivery_charge }}">Delivery Charge-৳ {{ delivery_charge }}</option>
+                        </select>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total</span>
+                        <span class="detail-value total">BDT {{ total_price|floatformat:"2" }}</span>
+                    </div>
+                </div>
+                <div class="discount-code">
+                    <input type="text" placeholder="Enter discount code">
+                    <button class="apply-btn">Apply</button>
+                </div>
+                <a href="{% url 'checkout' %}"><button class="checkout-btn">Checkout</button></a>
+            </div>
+        </div>
+    </div>
+
+    {%endblock%}

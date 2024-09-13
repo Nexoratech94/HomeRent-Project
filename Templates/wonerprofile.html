@@ -1,0 +1,220 @@
+{% extends 'Home.html' %}
+{% load static %}
+{% block title %}<title>Owner Profile</title>{% endblock %}
+{% block favicon %}
+<link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block point %}{% endblock %}
+{% block content %}
+
+<body>
+    <br><br>
+    <section style="background-color: #eee;">
+        <div class="container py-5" style="padding-bottom: 0rem!important;">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="{{ profile.profile_image.url }}" alt="avatar" class="rounded-circle img-fluid"
+                                style="width: 150px;">
+                            <h5 class="my-3">{{ profile.first_name }} {{ profile.last_name }}</h5>
+                            <p class="text-muted mb-1">{{ profile.phone }}</p>
+                            <p class="text-muted mb-4">{{ profile.address }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Full Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.first_name }} {{ profile.last_name }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.email }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.phone }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Age</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.age }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.address }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row1">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Registration Status</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ profile.get_registration_status_display }}</p>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="{% url 'userorderdashborde' %}" class="btn btn-primary btn-block">Total Order</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        <style>
+            .property-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 20px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        
+            .property-card-container {
+                flex: 1 1 calc(20% - 10px);
+                box-sizing: border-box;
+                max-width: calc(20% - 10px);
+                min-width: 150px;
+            }
+        
+            .property-card {
+                background-color: #fff;
+                border-radius: 5px;
+                overflow: hidden;
+                border: 1px solid #ddd;
+                transition: transform 0.2s ease-in-out;
+                padding: 5px;
+                
+            }
+        
+            .property-card:hover {
+                transform: translateY(-3px);
+            }
+        
+            .property-img {
+                width: 100%;
+                height: 100px;
+                object-fit: cover;
+            }
+        
+            .card-details {
+                padding: 5px;
+            }
+        
+            .card-details-content {
+                display: flex;
+                align-items: center;
+                margin-bottom: 3px;
+            }
+        
+            .card-details-content img {
+                margin-right: 3px;
+                width: 10px;
+                height: 10px;
+            }
+        
+            .location-name, .content p, .price p {
+                margin: 0;
+                font-size: 10px;
+                color: #333;
+            }
+        
+            .price {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 3px;
+            }
+        
+            .price p {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        
+            .booking-btn {
+                background-color: #007bff;
+                color: #fff;
+                padding: 3px 7px;
+                border-radius: 3px;
+                font-size: 10px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+        
+            .booking-btn:hover {
+                background-color: #0056b3;
+            }
+        </style>
+        
+        <div class="property-container">
+            {% for room in rooms %}
+            <div class="property-card-container">
+                <div class="property-card">
+                    <img src="{{ room.image1.url }}" alt="" class="property-img">
+        
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <img src="{% static 'images/location.svg' %}" alt="">
+                            <p class="location-name">{{ room.location }}</p>
+                        </div>
+                        <div class="card-details-content">
+                            <div class="content">
+                                <img src="{% static 'images/bed.svg' %}" alt="">
+                                <p>{{ room.bedrooms }} Bed</p>
+                            </div>
+                            <div class="content">
+                                <img src="{% static 'images/size.svg' %}" alt="">
+                                <p>{{ room.category.category_name }}</p>
+                            </div>
+                            <div class="content">
+                                <img src="{% static 'images/area.svg' %}" alt="">
+                                <p>{{ room.size }} M</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <p>৳ {{ room.rental_amount }}</p>
+                            {% if room.booking_status == 'accept' %}
+                                <p>Booked</p>
+                            {% else %}
+                                <a href="" class="booking-btn">NoNE</a>
+                            {% endif %}
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+    </section>
+</body>
+{% endblock %}

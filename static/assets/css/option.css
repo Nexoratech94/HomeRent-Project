@@ -1,0 +1,423 @@
+.option-bar {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+    font-family: 'Poetsen One', sans-serif;
+    list-style: none;
+    margin: 110px 0px 41px 0px;
+}
+
+.option1 h1 {
+    font-size: 70px;
+    color: #006357;
+    text-align: center;
+    padding: 95px 20px 30px 93px;
+}
+
+.nav-it1 button {
+    background-color: #df0707;
+    color: aliceblue;
+    text-decoration: none !important; /* Remove text underline */
+    font-family: 'Poetsen One', sans-serif;
+    text-transform: capitalize;
+    list-style: none;
+    padding: 10px 20px; /* Adjusted padding for the button */
+    border-radius: 20px;
+    border-color: none;
+    margin: 0px 0px 0px 121px;
+}
+
+.nav-it1 a button{
+    text-decoration: none;
+    margin: 0px 0px 0px 121px;
+}
+.container1 {
+    padding: 70px;
+    background-color: #7FB5AE;
+    text-decoration: none;
+    border-radius: 50px;
+}
+
+.row{
+    display: flex;
+    list-style: none;
+    margin: 0px 0px 0px 0px;
+    --bs-gutter-x: 5.5rem;
+    
+}
+
+
+.col {
+    text-align: center;
+}
+
+.col img {
+    width: 45%; /* Adjusted width for the images */
+    display: block;
+    margin: 0 auto;
+    border-radius: 70%; /* Adjusted border-radius for circular images */
+}
+
+.col button {
+    border-color: none;
+    display: block;
+    margin: 10px auto 0;
+    background-color: #006357;
+    color: aliceblue;
+    text-decoration: none !important; /* Remove text underline */
+    font-family: 'Poetsen One', sans-serif;
+    text-transform: capitalize;
+    list-style: none;
+    padding: 10px 20px; /* Adjusted padding for the button */
+    border-radius: 20px;
+}
+
+
+#custom-container .row [class^="col"] a button {
+    text-decoration: none !important;
+}
+
+
+
+/* Rest of your existing styles... */
+
+
+.option2 {
+    text-align: center;
+    text-decoration: none;
+}
+
+.option2 img {
+    max-width: 100%;
+    border-radius:50%;
+}
+
+
+
+
+/* Path: assets/css/housedetails.css */
+ 
+.header-container {
+    padding: 2rem 0;
+    background-color: #306d62;
+    color: #ffffff;
+    text-align: center;
+    border-bottom: 6px solid #4fd1c5;
+}
+.header-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.header-subtitle {
+    font-size: 1.5rem;
+}
+.image-container {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mb-3 .form-control {
+    border-radius: 0.5rem;
+    border-color: #4fd1c5;
+    box-shadow: none;
+    min-height:45px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 10px 15px;
+    border-radius:20px;
+    margin: 0 auto;
+}
+.form-control:focus {
+    border-color: #4fd1c5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 209, 197, 0.25);
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.form-label {
+    font-weight: bold;
+} 
+.btn-primary {
+    background-color: #4fd1c5;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.75rem 2rem;
+    transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #3ab4a0;
+}
+
+
+#mainImage {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    box-shadow: #7FB5AE;
+    border: 7px solid #0e493e;
+}
+
+/* Thumbnail images container */
+.thumbnails-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+/* Thumbnail image */
+.thumbnail-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 7px solid #0e493e;
+    border-radius: 1.5rem;
+}
+
+/* Book form container */
+.book-form-container {
+    margin: auto;
+    width: 60%;
+    padding: 1rem;
+    border: 14px solid #006357;
+    border-radius: 2.5rem;
+    background-color: antiquewhite;
+    
+}
+
+.imagebar {
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1rem;
+}
+/* Book form title */
+.book-form-title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.price-details-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.price-details-container .row {
+    margin-bottom: 20px;
+}
+
+.price-details-container .additional-facilities p {
+    margin-bottom: 5px;
+}
+
+.map-image {
+    width: 526px;
+    height: 307px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+.con {
+    margin: 20px;
+}
+
+.rower {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-6 {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+}
+
+.box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.box p {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.mt-5 {
+    margin-top: 7rem !important;
+}
+
+/* Media Query for responsiveness */
+/* Media Query for responsiveness */
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    /* Adjustments for other elements */
+    .rower {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .box {
+        width: 100%;
+    }
+    
+    .image-container {
+        padding: 1rem;
+    }
+    
+    .header-title {
+        font-size: 2.5rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .thumbnail-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .book-form-container {
+        width: 90%;
+        padding: 0.5rem;
+    }
+    
+    .map-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+        display: inline;
+        margin: auto;
+    }
+      /* Add more adjustments as needed */
+}
+
+
+.apply-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Checkout button */
+.checkout-btn {
+    padding: 15px 0;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+ 
+
+
+/* Path: assets/css/Comments.css */
+/* Comments Section */
+
+.comment-section {
+    margin-top: 30px;
+}
+
+.article-comment {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.comments-section h2 {
+    margin-bottom: 20px;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.comment-content {
+    display: flex;
+    align-items: center;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+}

@@ -1,0 +1,99 @@
+{% extends 'Adminpannel/index.html' %}
+{% load static %}
+{% block title %}<title>Accept Booking</title>{% endblock %}
+{% block favicon %} <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">{% endblock %}
+{% block points %}{% endblock %}
+{% block content %}
+
+<body>
+	<div class="main-wrapper">
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<div class="mt-5">
+								<h4 class="card-title float-left mt-2">Appointments</h4>
+								<a href="add-booking.html" class="btn btn-primary float-right veiwbutton ">Add
+									Booking</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card card-table">
+							<div class="card-body booking_card">
+								<div class="table-responsive">
+									<table class="datatable table table-stripped table table-hover table-center mb-0">
+										<thead>
+											<tr>
+												<th>Booking ID</th>
+												<th>Name</th>
+												<th>Room Type</th>
+												<th>Bedrooms</th>
+												<th>Ammout</th>
+												<th>Room</th>
+												<th>Email ID</th>
+												<th>Ph.Number</th>
+												<th>Date</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for booking in bookings %}
+											<tr>
+												<td>RM:{{ booking.booking_id }}</td>
+												<td>
+													<h2 class="table-avatar">
+														<a href="profile.html" class="avatar avatar-sm mr-2"><img
+																class="avatar-img rounded-circle"
+																src="{{ booking.renter_image.url}}"
+																alt="User Image"></a>
+														<a href="profile.html">{{ booking.name }} <span>ROOMID:#{{booking.room.room_id }}</span></a>
+													</h2>
+												</td>
+												<td>{{ booking.room.house_type }}</td>
+												<td>{{ booking.room.bedrooms }} Bedrooms</td>
+												<td>{{ booking.room.rental_amount }}</td>
+												<td>
+													<img src="{{ booking.room.image1.url }}" alt="Room Image" style="height: 50px; width: 50px" onclick="showImage(this)">
+
+												</td>
+
+												<td>{{ booking.email }}</td>
+												<td>{{ booking.phone }}</td>
+												<td>{{ booking.booking_date }}</td>
+												<td>
+													<div class="actions">
+														<a href="#" class="btn btn-sm bg-success-light mr-2">{{ booking.booking_status }}</a>
+													</div>
+												</td> 
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+    function showImage(img) {
+        // Toggle between original size and 300x300 size
+        if (img.style.width === '50px') {
+            img.style.width = '300px';
+            img.style.height = '300px';
+        } else {
+            img.style.width = '50px';
+            img.style.height = '50px';
+        }
+    }
+</script>
+
+
+{% endblock %}
